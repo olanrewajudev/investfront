@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito ", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --color-primary: #4A1B4A;
+  --color-yellow: #f7921a;
+  --color-primary-light: #F9F5FF;
+  --color-grayed: #F9FAFB;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+
+.scrollsdown::-webkit-scrollbar {
+  height: 0px;
+}
+
+.scrolls::-webkit-scrollbar {
+  width: 5px;
+}
+
+.scrolls::-webkit-scrollbar-thumb {
+  width: 5px;
+  background: lightgrey;
+  border-radius: 10rem;
+}
+
+
+
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
