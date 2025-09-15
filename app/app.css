@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Nunito ", ui-sans-serif, system-ui, sans-serif,
+  --font-sans: "Poppins", sans-serif, ui-sans-serif, system-ui,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --color-primary: #4A1B4A;
   --color-yellow: #f7921a;

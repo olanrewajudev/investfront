@@ -1,6 +1,10 @@
 import toast, { type Renderable, type Toast, type ValueFunction } from "react-hot-toast";
 import banner5 from '../../../public/general/banner1.jpg'
 import banner4 from '../../../public/general/banner2.jpg'
+import homeabout1 from '../../../public/general/box-icon-a.png'
+import homeabout2 from '../../../public/general/box-icon-b.png'
+import homeabout3 from '../../../public/general/box-icon-c.png'
+import homeabout4 from '../../../public/general/box-icon-d.png'
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
     toast.success(message,
         {
@@ -85,7 +89,7 @@ export const recentBlogPosts = [
 export const HomeBanner = [
     {
         img: banner4,
-        title: 'Crypto Currency exchange you can trust',
+        title: 'Licensed Lbourg',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda praesentium, sed eaque tempora laudantium magnam non sequi ipsam, a accusantium officiis fugit nemo nihil dolorem voluptates.',
         id: 1
     },
@@ -96,4 +100,31 @@ export const HomeBanner = [
         id: 2
     },
 
+]
+
+export const homeabout = [
+    {
+        img: homeabout1,
+        title: 'Licensed Lbourg ',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 1
+    },
+    {
+        img: homeabout2,
+        title: 'NO HIDDEN FEES',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 1
+    },
+    {
+        img: homeabout3,
+        title: 'INSTANT TRADING',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 1
+    },
+    {
+        img: homeabout4,
+        title: 'SECURE trusted',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 1
+    },
 ]

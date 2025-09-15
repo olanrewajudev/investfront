@@ -6,6 +6,7 @@ import { TbBrandGmail } from 'react-icons/tb'
 import { headerFirstLink, headerSecondLink } from '../utils/utils'
 import { Link } from 'react-router'
 import Image from '../general/image'
+import { SlMenu } from 'react-icons/sl'
 
 export default function UserHeader() {
   const [scroll, setScroll] = useState(false)
@@ -25,25 +26,27 @@ export default function UserHeader() {
     <div>
       {/* unfixed header */}
       <div className="">
-        <div className="flex items-center justify-between px-32 bg-neutral-900 text-white py-3 font-medium">
-          <div className="gap-10 flex">
+        <div className="flex items-center justify-between xl:px-32 px-10 bg-neutral-900 text-white py-3 font-medium">
+          <div className="gap-10 lg:flex hidden">
             {headerFirstLink.map((item, i: number) => (
               <Link key={i} to={item.href} className='hover:text-yellow'>{item.title}</Link>
             ))}
           </div>
           <div className="flex gap-5 text-2xl "><FaFacebookF /><BsInstagram /><AiOutlineGooglePlus /><TbBrandGmail /></div>
+          <div className="lg:hidden block"><SlMenu size={20} /></div>
         </div>
       </div>
 
       {/* fixed header */}
-      <div className={`flex items-center justify-between text-center bg-white shadow-2xl py-5 px-32  z-99 w-full ${scroll ? 'fixed -mt-12' : 'py-5'}`}>
-        <div className=""> <Image src='/general/logo.png' alt="Cryptocoin" className="w-[15rem]" /> </div>
-        <div className="gap-10 flex font-medium  justify-center items-center">
+      <div className={`flex items-center justify-between text-center bg-white/30 backdrop-blur-xl shadow-2xl py-5 px-10 xl:px-32  z-99 w-full ${scroll ? 'fixed -mt-12' : 'py-5'}`}>
+        <div className=""> <Image src='/general/logo.png' alt="Cryptocoin" className="w-[13rem]" /> </div>
+        <div className="gap-8 lg:flex font-medium  justify-center items-center hidden">
           {headerSecondLink.map((item, i: number) => (
             <Link key={i} to={item.href} className='hover:text-yellow'>{item.title}</Link>
           ))}
           <div className="bg-neutral-900 text-white px-6 py-2.5 rounded-full hover:bg-yellow hover:text-black">Get Started</div>
         </div>
+          <div className="lg:hidden block"><SlMenu size={20} /></div>
       </div>
     </div>
   )

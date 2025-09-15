@@ -16,11 +16,10 @@ export default function UserFooter() {
 
   return (
     <div className="">
-      <div className='bg-neutral-900 relative'>
-        <Image src={footerbg} className='w-full h-[25rem] object-cover' alt=""  style={{ zIndex: 0 }} />
-        <div className="absolute inset-0 z-10 flex flex-wrap items-start justify-center pt-20 bg-black/50 gap-32">
+      <div className='bg-neutral-900 '>
+        <div className=" lg:flex flex-wrap items-start justify-center pt-10 bg-black/50 gap-32 px-10">
           {footersLink.map((_item, i: number) => (
-            <div className="" key={i}>
+            <div className="mb-8" key={i}>
               <div className="text-white text-lg font-semibold">{_item.title}</div>
               <div className="text-white grid grid-cols-1 gap-5 mt-4 text-base font-semibold">
                 {_item.links.map((link, i: number) => (
@@ -30,7 +29,7 @@ export default function UserFooter() {
             </div>
           ))}
 
-          <div className="">
+          <div className="mb-8">
             <div className="text-white text-lg font-semibold mb-4">RECENT BLOG</div>
             {recentBlogPosts.map((_item, i: number) => (
               <div className="mb-4" key={i}>
@@ -45,7 +44,7 @@ export default function UserFooter() {
             ))}
           </div>
 
-          <div className="text-white text-base font-semibold">
+          <div className="text-white text-base font-semibold pb-8">
             <div className="text-white text-lg font-semibold c">GET IN TOUCH</div>
             <div className="flex gap-2 items-center"><CiLocationOn size={32} />{footerAddress.address}</div>
             <div className="flex gap-2 items-center my-7"><BiPhone size={32} /><div className="">Telphone: {footerAddress.phone2} <br />Telphone: {footerAddress.phone2}</div></div>
@@ -54,7 +53,7 @@ export default function UserFooter() {
         </div>
 
       </div>
-      <div className="bg-black flex  justify-between items-center px-32 text-white py-4">
+      <div className="bg-black flex  justify-between items-center lg:px-32 text-white py-4 px-10">
         <div className="text-md font-semibold">Copyright © {fullYear} CryptoCoin.</div>
         <div className="flex gap-5 text-2xl"><FaFacebookF /><BsInstagram /><AiOutlineGooglePlus /><TbBrandGmail /></div>
       </div>  
