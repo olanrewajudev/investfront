@@ -5,6 +5,7 @@ import homeabout1 from '../../../public/general/box-icon-a.png'
 import homeabout2 from '../../../public/general/box-icon-b.png'
 import homeabout3 from '../../../public/general/box-icon-c.png'
 import homeabout4 from '../../../public/general/box-icon-d.png'
+import user from '../../../public/general/user.png'
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
     toast.success(message,
         {
@@ -77,11 +78,37 @@ export const recentBlogPosts = [
         image: '/general/banner1.jpg',
         title: 'First blog post',
         date: 'December 19, 2017',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda ',
     },
     {
         image: '/general/calc-bg.jpg',
         title: 'second blog post',
         date: 'January 9, 2019',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda ',
+    },
+    {
+        image: '/general/calc-bg.jpg',
+        title: 'second blog post',
+        date: 'January 9, 2019',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda ',
+    },
+    {
+        image: '/general/calc-bg.jpg',
+        title: 'second blog post',
+        date: 'January 9, 2019',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda ',
+    },
+    {
+        image: '/general/calc-bg.jpg',
+        title: 'second blog post',
+        date: 'January 9, 2019',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda ',
+    },
+    {
+        image: '/general/calc-bg.jpg',
+        title: 'second blog post',
+        date: 'January 9, 2019',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda ',
     },
 ]
 
@@ -101,6 +128,38 @@ export const HomeBanner = [
     },
 
 ]
+export const reviews = [
+    {
+        img: user,
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda praesentium, sed eaque tempora laudantium magnam non sequi ipsam, a accusantium officiis fugit nemo nihil dolorem voluptates.',
+        name: 'Jack Lbourg',
+        role: 'CEO, CryptoCoin',
+        id: 1
+    },
+    {
+        img: user,
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda praesentium, sed eaque tempora laudantium magnam non sequi ipsam, a accusantium officiis fugit nemo nihil dolorem voluptates.',
+        name: 'Jack Lbourg',
+        role: 'CEO, CryptoCoin',
+        id: 2
+    },
+    {
+        img: user,
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda praesentium, sed eaque tempora laudantium magnam non sequi ipsam, a accusantium officiis fugit nemo nihil dolorem voluptates.',
+        name: 'Jack Lbourg',
+        role: 'CEO, CryptoCoin',
+        id: 3
+    },
+    {
+        img: user,
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste nesciunt ratione vel assumenda praesentium, sed eaque tempora laudantium magnam non sequi ipsam, a accusantium officiis fugit nemo nihil dolorem voluptates.',
+        name: 'Jack Lbourg',
+        role: 'CEO, CryptoCoin',
+        id: 4
+    },
+
+
+]
 
 export const homeabout = [
     {
@@ -113,18 +172,18 @@ export const homeabout = [
         img: homeabout2,
         title: 'NO HIDDEN FEES',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        id: 1
+        id: 2
     },
     {
         img: homeabout3,
         title: 'INSTANT TRADING',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        id: 1
+        id: 3
     },
     {
         img: homeabout4,
         title: 'SECURE trusted',
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        id: 1
+        id: 4
     },
 ]

@@ -1,6 +1,6 @@
 import HomeCarousel from "~/components/general/home-carousel";
 import type { Route } from "./+types/home";
-import { homeabout } from "~/components/utils/utils";
+import { homeabout, recentBlogPosts, reviews } from "~/components/utils/utils";
 import { Link } from "react-router";
 import bitcoin from '../../../public/general/photo-md-a.jpg'
 import chart from '../../../public/general/calc-bg.jpg'
@@ -13,6 +13,7 @@ import { BsCashStack, BsGlobe2 } from "react-icons/bs";
 import { BiPieChartAlt2 } from "react-icons/bi";
 import { CiDatabase, CiDesktop } from "react-icons/ci";
 import { RiEditBoxLine } from "react-icons/ri";
+import Scroller from "~/components/general/scroller";
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -142,26 +143,44 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[10rem]">
+      <div className="mt-[10rem] px-10">
         <div className="text-center px-5 lg:px-32 mb-16">
           <p className="font-bold text-[2.5rem] mb-3 lg:text-[4rem]">What investors say</p>
+          <p className="text-lg">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>
+        </div>
+        <Scroller>
+          {reviews.map((item) => (
+            <div className="flex flex-col items-center text-center lg:w-[50%] lg:mx-auto mx-5 gap-4 mb-10" key={item.id}>
+              <Image src={item.img} className="w-36" />
+              <div><p className="font-bold mb-1">{item.name}</p><p>{item.role}</p></div>
+              <div className="text- lg:text-base">{item.content}</div>
+            </div>
+          ))}
+        </Scroller>
+
+      </div>
+
+      <div className="mt-[5rem] px-10 lg:px-32">
+        <div className="text-center mb-16">
+          <p className="font-bold text-[2.5rem] mb-3 lg:text-[4rem]">our latest news</p>
           <p className="">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>
         </div>
         <div className="">
-          <Image />
-          <div className="">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiamSed ut perspi ciatis unde omnis </div>
-          <div className="">
-            <p className=""></p>
-            <p className=""></p>
-            <p className=""></p>
+          <div className="lg:flex items-center justify-center gap-10">
+            {recentBlogPosts.slice(0, 3).map((item, i: number) => (
+              <div className="mb-10" key={i}>
+                <Image src={item.image} className="rounded-tr-2xl rounded-tl-2xl h-[20rem] w-full object-cover" />
+                <div className="bg-white shadow-2xl text-center rounded-br-2xl rounded-bl-2xl py-4 px-4">
+                  <div className="">
+                    <p className="pt-6">Posted {item.date}</p>
+                    <p className="my-4 font-bold text-lg">{item.title}</p>
+                    <p className="pb-6 text-sm lg:text-base">{item.content}</p>
+                  </div>
+                  <Link to='' className=""> <div className="uppercase rounded-full bg-black text-white px-6 font-bold py-3 right-0 ">read more</div></Link>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
-
-      <div className="mt-[10rem]">
-        <div className="text-center px-5 lg:px-32 mb-16">
-          <p className="font-bold text-[2.5rem] mb-3 lg:text-[4rem]">our latest news</p>
-          <p className="">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>
         </div>
       </div>
 

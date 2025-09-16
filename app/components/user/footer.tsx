@@ -31,7 +31,7 @@ export default function UserFooter() {
 
           <div className="mb-8">
             <div className="text-white text-lg font-semibold mb-4">RECENT BLOG</div>
-            {recentBlogPosts.map((_item, i: number) => (
+            {recentBlogPosts.slice(0, 2).map((_item, i: number) => (
               <div className="mb-4" key={i}>
                 <div className="flex gap-2 ">
                   <Image src={_item.image} className="w-20 h-16 object-cover rounded-tl-lg rounded-br-lg" />
