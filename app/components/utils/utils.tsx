@@ -6,6 +6,14 @@ import homeabout2 from '../../../public/general/box-icon-b.png'
 import homeabout3 from '../../../public/general/box-icon-c.png'
 import homeabout4 from '../../../public/general/box-icon-d.png'
 import user from '../../../public/general/user.png'
+import cl1 from '../../../public/general/cl-logo1.png'
+import cl2 from '../../../public/general/cl-logo2.png'
+import cl3 from '../../../public/general/cl-logo3.png'
+import cl4 from '../../../public/general/cl-logo4.png'
+import cl5 from '../../../public/general/cl-logo5.png'
+import cl6 from '../../../public/general/cl-logo6.png'
+
+
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
     toast.success(message,
         {
@@ -186,4 +194,13 @@ export const homeabout = [
         text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         id: 4
     },
+]
+
+export const clientsLogo = [
+    { img: cl1, id: 1 },
+    { img: cl2, id: 2 },
+    { img: cl3, id: 3 },    
+    { img: cl4, id: 4 },    
+    { img: cl5, id: 5 },    
+    { img: cl6, id: 6 },    
 ]

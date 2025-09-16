@@ -1,6 +1,6 @@
 import HomeCarousel from "~/components/general/home-carousel";
 import type { Route } from "./+types/home";
-import { homeabout, recentBlogPosts, reviews } from "~/components/utils/utils";
+import { clientsLogo, homeabout, recentBlogPosts, reviews } from "~/components/utils/utils";
 import { Link } from "react-router";
 import bitcoin from '../../../public/general/photo-md-a.jpg'
 import chart from '../../../public/general/calc-bg.jpg'
@@ -143,7 +143,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[10rem] px-10">
+      <div className="mt-[10rem] bg-black/10 py-20 px-10">
         <div className="text-center px-5 lg:px-32 mb-16">
           <p className="font-bold text-[2.5rem] mb-3 lg:text-[4rem]">What investors say</p>
           <p className="text-lg">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>
@@ -160,7 +160,7 @@ export default function Home() {
 
       </div>
 
-      <div className="mt-[5rem] px-10 lg:px-32">
+      <div className="mt-[8rem] px-10 lg:px-32">
         <div className="text-center mb-16">
           <p className="font-bold text-[2.5rem] mb-3 lg:text-[4rem]">our latest news</p>
           <p className="">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>
@@ -184,7 +184,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className=""></div>
+      <div className="mt-[6rem]">
+        <div className="flex flex-wrap items-center justify-center bg-black/10 py-16">
+          {clientsLogo.map((i) => (<Image src={i.img} key={i.id} className="w-[15rem]" />))}
+        </div>
+      </div>
     </>
   );
-}
+} 
