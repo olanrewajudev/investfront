@@ -6,6 +6,8 @@ export default [
         route("/about-us", "routes/general/aboutus.tsx"),
         route("/team", "routes/general/team.tsx"),
         route("/contact-us", "routes/general/contactus.tsx"),
+        route("/buy-and-sell", "routes/general/buy-sell.tsx"),
+        route("/service", "routes/general/service.tsx"),
     ])
 
 ] satisfies RouteConfig;

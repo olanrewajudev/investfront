@@ -5,6 +5,7 @@ import homeabout1 from '../../../public/general/box-icon-a.png'
 import homeabout2 from '../../../public/general/box-icon-b.png'
 import homeabout3 from '../../../public/general/box-icon-c.png'
 import homeabout4 from '../../../public/general/box-icon-d.png'
+import homeabout5 from '../../../public/general/box-icon-e.png'
 import user from '../../../public/general/user.png'
 import cl1 from '../../../public/general/cl-logo1.png'
 import cl2 from '../../../public/general/cl-logo2.png'
@@ -45,10 +46,10 @@ export const headerFirstLink = [
     { title: "Register", href: '' }
 ]
 export const headerSecondLink = [
-    { title: "Home", href: '' },
-    { title: "About Us", href: '' },
-    { title: "Service", href: '' },
-    { title: "Buy & Sell", href: '' },
+    { title: "Home", href: '/' },
+    { title: "About Us", href: '/about-us' },
+    { title: "Service", href: '/service' },
+    { title: "Buy & Sell", href: '/buy-and-sell' },
     { title: "Contact Us", href: '' }
 ]
 export const footersLink = [
@@ -199,8 +200,37 @@ export const homeabout = [
 export const clientsLogo = [
     { img: cl1, id: 1 },
     { img: cl2, id: 2 },
-    { img: cl3, id: 3 },    
-    { img: cl4, id: 4 },    
-    { img: cl5, id: 5 },    
-    { img: cl6, id: 6 },    
+    { img: cl3, id: 3 },
+    { img: cl4, id: 4 },
+    { img: cl5, id: 5 },
+    { img: cl6, id: 6 },
 ]
+
+export const buyandsell = [
+    {
+        img: homeabout1,
+        title: 'Licensed Lbourg ',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 1
+    },
+    {
+        img: homeabout5,
+        title: 'Licensed Lbourg ',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 2
+    },
+    {
+        img: homeabout3,
+        title: 'Licensed Lbourg ',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        id: 3
+    },
+]
+
+export const tablPanel = [
+    { amount: "0.0656 btc", price: '100.00' },
+    { amount: "0.0656 btc", price: '100.00' },
+    { amount: "0.0656 btc", price: '100.00' },
+    { amount: "0.0656 btc", price: '100.00' },
+]
+
