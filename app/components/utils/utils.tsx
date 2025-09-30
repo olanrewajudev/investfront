@@ -13,6 +13,15 @@ import cl3 from '../../../public/general/cl-logo3.png'
 import cl4 from '../../../public/general/cl-logo4.png'
 import cl5 from '../../../public/general/cl-logo5.png'
 import cl6 from '../../../public/general/cl-logo6.png'
+import choose1 from '../../../public/general/box-icon-f.png'
+import choose2 from '../../../public/general/box-icon-g.png'
+import choose3 from '../../../public/general/box-icon-h.png'
+import service1 from '../../../public/general/service-thumb-a.jpg'
+import service2 from '../../../public/general/service-thumb-b.jpg'
+import service3 from '../../../public/general/service-thumb-c.jpg'
+import service4 from '../../../public/general/service-thumb-d.jpg'
+import service5 from '../../../public/general/service-thumb-e.jpg'
+import service6 from '../../../public/general/service-thumb-f.jpg'
 
 
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
@@ -56,18 +65,18 @@ export const footersLink = [
     {
         title: 'SERVICES',
         links: [
-            { name: 'Buy Bitcoins', href: '', isNew: false },
-            { name: 'Buy Ethereum', href: '', isNew: false },
-            { name: 'Bitcoin Trading', href: '', isNew: false },
+            { name: 'Buy Crypto', href: '', isNew: false },
+            { name: 'Crypto Trading', href: '', isNew: false },
             { name: 'Margin Trading', href: '', isNew: false },
+            { name: 'Market Data', href: '', isNew: false },
         ]
     },
     {
         title: 'INFORMATION',
         links: [
             { name: 'Payment Options', href: '', isNew: false },
-            { name: 'Fee Schedule', href: '', isNew: false },
-            { name: 'Getting Started', href: '', isNew: false },
+            { name: 'How It Works', href: '', isNew: false },
+            { name: 'Pricing', href: '', isNew: false },
             { name: 'Identity Verification Guide', href: '', isNew: false },
             { name: 'Card Verification Guide', href: '', isNew: false },
         ]
@@ -234,3 +243,24 @@ export const tablPanel = [
     { amount: "0.0656 btc", price: '100.00' },
 ]
 
+export const walletFeatures = [
+    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+]
+export const chooseus = [
+    {icon: choose1, title: "Payment Options", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: choose2, title: "Strong Security", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    {icon: choose3, title: "World Coverage", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+]
+export const about = [
+    {icon: service1, title: "Buy crypto Online", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+    {icon: service2, title: "sell crypto", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+    {icon: service3, title: "earn passive income", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+    {icon: service4, title: "trade with sceure escrow", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+    {icon: service5, title: "build your reputation", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+    {icon: service6, title: "get a free wallet", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+]

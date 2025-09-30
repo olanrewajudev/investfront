@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import Image from '~/components/general/image'
-import banner from '../../../public/general/photo-md-a.jpg'
+import banner from '../../../public/general/cta-bg.jpg'
 import image1 from '../../../public/general/icon-a.png'
 import image2 from '../../../public/general/icon-b.png'
 import { buyandsell } from '~/components/utils/utils'
@@ -11,7 +11,7 @@ export default function BuySell() {
         <div>
             <div className="">
                 <div className="relative">
-                    <Image src={banner} className='h-[18rem] lg:h-[30rem] brightness-50 w-full object-cover' />
+                    <Image src={banner} className='h-[18rem] lg:h-[35rem] brightness-50 w-full object-cover' />
                     <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
                         <p className="font-semibold text-[3rem] lg:text-[4rem]">Buy Crypto</p>
                         <div className="flex items-center gap-2 font-medium mt-3">
@@ -20,7 +20,7 @@ export default function BuySell() {
                     </div>
                 </div>
             </div>
-            <div className='w-[85%] mx-auto'>
+            <div className='w-[80%] mx-auto'>
 
                 <div className="">
                     <div className="mt-32 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
