@@ -7,10 +7,17 @@ import { headerFirstLink, headerSecondLink } from '../utils/utils'
 import { Link } from 'react-router'
 import Image from '../general/image'
 import { SlMenu } from 'react-icons/sl'
+import Sidebar from '../general/sidebar'
 
 export default function UserHeader() {
   const [scroll, setScroll] = useState(false)
+  const [view, setView] = useState(false)
 
+  const toggleView = () => {
+    setView(prevView => !prevView)
+  }
+
+  
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 55) {
@@ -38,7 +45,9 @@ export default function UserHeader() {
       </div>
 
       {/* fixed header */}
-      <div className={`flex items-center justify-between text-center bg-white/30 backdrop-blur-xl shadow-2xl py-5 px-10 xl:px-32  z-99 w-full ${scroll ? 'fixed -mt-12' : 'py-5'}`}>
+      {view && <Sidebar closeView={toggleView} />}
+
+      <div className={`flex items-center justify-between text-center bg-white/30 backdrop-blur-xl shadow-2xl py-5 px-10 xl:px-32 z-50 w-full ${scroll ? 'fixed -mt-12' : 'py-5'}`}>
         <div className=""> <Image src='/general/logo.png' alt="Cryptocoin" className="w-[13rem]" /> </div>
         <div className="gap-8 lg:flex font-medium  justify-center items-center hidden">
           {headerSecondLink.map((item, i: number) => (
@@ -46,7 +55,7 @@ export default function UserHeader() {
           ))}
           <div className="bg-neutral-900 text-white px-6 py-2.5 rounded-full hover:bg-yellow hover:text-black">Get Started</div>
         </div>
-          <div className="lg:hidden block"><SlMenu size={20} /></div>
+        <div onClick={toggleView} className="lg:hidden block"><SlMenu size={20} /></div>
       </div>
     </div>
   )

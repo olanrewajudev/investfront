@@ -8,6 +8,7 @@ export default [
         route("/contact-us", "routes/general/contactus.tsx"),
         route("/buy-and-sell", "routes/general/buy-sell.tsx"),
         route("/service", "routes/general/service.tsx"),
+        route("/testimonial", "routes/general/testimonials.tsx"),
     ])
 
 ] satisfies RouteConfig;

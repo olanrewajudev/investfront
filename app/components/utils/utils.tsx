@@ -16,6 +16,7 @@ import cl6 from '../../../public/general/cl-logo6.png'
 import choose1 from '../../../public/general/box-icon-f.png'
 import choose2 from '../../../public/general/box-icon-g.png'
 import choose3 from '../../../public/general/box-icon-h.png'
+import team3 from '../../../public/general/user.png'
 import service1 from '../../../public/general/service-thumb-a.jpg'
 import service2 from '../../../public/general/service-thumb-b.jpg'
 import service3 from '../../../public/general/service-thumb-c.jpg'
@@ -244,23 +245,40 @@ export const tablPanel = [
 ]
 
 export const walletFeatures = [
-    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    { icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: '', title: "", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
 ]
 export const chooseus = [
-    {icon: choose1, title: "Payment Options", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: choose2, title: "Strong Security", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
-    {icon: choose3, title: "World Coverage", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.'},
+    { icon: choose1, title: "Payment Options", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: choose2, title: "Strong Security", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+    { icon: choose3, title: "World Coverage", text: 'Morbi eget varius risus, ut venenatis libero. Pellentesque in porta dui.' },
+]
+export const team = [
+    { icon: team3, name: "jason markerson", role: 'consultant' },
+    { icon: team3, name: "felix antik", role: 'team leader' },
+    { icon: team3, name: "mardorna phillip", role: 'consultant' },
+    { icon: team3, name: "roy cole", role: 'broker' },
+    { icon: team3, name: "smith stone", role: 'broker' },
+    { icon: team3, name: "micheal leonard", role: 'team leader' },
 ]
 export const about = [
-    {icon: service1, title: "Buy crypto Online", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
-    {icon: service2, title: "sell crypto", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
-    {icon: service3, title: "earn passive income", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
-    {icon: service4, title: "trade with sceure escrow", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
-    {icon: service5, title: "build your reputation", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
-    {icon: service6, title: "get a free wallet", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.'},
+    { icon: service1, title: "Buy crypto Online", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { icon: service2, title: "sell crypto", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { icon: service3, title: "earn passive income", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { icon: service4, title: "trade with sceure escrow", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { icon: service5, title: "build your reputation", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { icon: service6, title: "get a free wallet", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+]
+
+export const NavbarLink = [
+    { id: 1, href: "/", name: 'HOME' },
+    { id: 2, href: "/Shopmen", name: 'SHOP MEN' },
+    { id: 3, href: "/Shopwomen", name: 'SHOP WOMEN' },
+    { id: 4, href: "/Newarrival", name: 'NEW ARRIVAL' },
+    { id: 5, href: "/Newarrival", name: 'FOOT WEARS' },
+    { id: 6, href: "/Newarrival", name: 'WRIST WATCH' },
 ]
