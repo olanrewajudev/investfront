@@ -1,5 +1,4 @@
-import React from 'react'
-
+ 
 type ImageProps = {
     src?: string;
     style?: any;

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Outlet } from 'react-router'
+ import { Outlet } from 'react-router'
 import UserFooter from '~/components/user/footer'
 import UserHeader from '~/components/user/header'
 

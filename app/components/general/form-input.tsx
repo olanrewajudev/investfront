@@ -1,6 +1,5 @@
 import { Checkbox, FormControl, FormControlLabel, FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material';
-import React from 'react'
-import { Visibility, VisibilityOff } from '@mui/icons-material';
+ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import PhoneSelector from './phone-selector';
 
 type FormInputProps = {

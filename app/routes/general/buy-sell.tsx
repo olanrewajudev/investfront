@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router'
+ import { Link } from 'react-router'
 import Image from '~/components/general/image'
 import banner from '../../../public/general/cta-bg.jpg'
 import image1 from '../../../public/general/icon-a.png'
@@ -13,7 +12,7 @@ export default function BuySell() {
                 <div className="relative">
                     <Image src={banner} className='h-[18rem] lg:h-[35rem] brightness-50 w-full object-cover' />
                     <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
-                        <p className="font-semibold text-[3rem] lg:text-[4rem]">Buy Crypto</p>
+                        <p className="font-medium text-[3rem] lg:text-[4rem]">Buy Crypto</p>
                         <div className="flex items-center gap-2 font-medium mt-3">
                             <Link to='' className='hover:text-yellow'>Home</Link> / <div className="">Buy Crypto  </div>
                         </div>

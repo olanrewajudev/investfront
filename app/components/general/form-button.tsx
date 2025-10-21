@@ -1,5 +1,4 @@
-import React from 'react'
-type FormButtonProps = {
+ type FormButtonProps = {
   title: string;
   type?: 'submit' | 'button';
   onClick?: () => void;

@@ -24,7 +24,6 @@ import service4 from '../../../public/general/service-thumb-d.jpg'
 import service5 from '../../../public/general/service-thumb-e.jpg'
 import service6 from '../../../public/general/service-thumb-f.jpg'
 
-
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
     toast.success(message,
         {
@@ -265,13 +264,22 @@ export const team = [
     { icon: team3, name: "smith stone", role: 'broker' },
     { icon: team3, name: "micheal leonard", role: 'team leader' },
 ]
-export const about = [
-    { icon: service1, title: "Buy crypto Online", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
-    { icon: service2, title: "sell crypto", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
-    { icon: service3, title: "earn passive income", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
-    { icon: service4, title: "trade with sceure escrow", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
-    { icon: service5, title: "build your reputation", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
-    { icon: service6, title: "get a free wallet", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+
+export const services = [
+    { id: '1', icon: service1, title: "Buy crypto Online", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { id: '2', icon: service2, title: "sell crypto", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { id: '3', icon: service3, title: "earn passive income", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { id: '4', icon: service4, title: "trade with sceure escrow", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { id: '5', icon: service5, title: "build your reputation", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+    { id: '6', icon: service6, title: "get a free wallet", text: 'Justo dolor pede pede sit. Eu amet eos mauris, iaculis in, fringilla diam eros erat, fermentum etiam parturient est adipiscing.' },
+]
+export const serviceSingle = [
+    { id: '1', icon: service1, title: "Buy crypto Online", text: 'Lorem ipsum dolor sit amet, conse ctetur adipi scing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris idunt ut labore et dolore magna aliqua.', text2: 'Sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris.' },
+    { id: '2', icon: service2, title: "sell crypto", text: 'Lorem ipsum dolor sit amet, conse ctetur adipi scing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris idunt ut labore et dolore magna aliqua.', text2: 'Sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris.' },
+    { id: '3', icon: service3, title: "earn passive income", text: 'Lorem ipsum dolor sit amet, conse ctetur adipi scing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris idunt ut labore et dolore magna aliqua.', text2: 'Sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris.' },
+    { id: '4', icon: service4, title: "trade with sceure escrow", text: 'Lorem ipsum dolor sit amet, conse ctetur adipi scing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris idunt ut labore et dolore magna aliqua.', text2: 'Sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris.' },
+    { id: '5', icon: service5, title: "build your reputation", text: 'Lorem ipsum dolor sit amet, conse ctetur adipi scing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris idunt ut labore et dolore magna aliqua.', text2: 'Sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris.' },
+    { id: '6', icon: service6, title: "get a free wallet", text: 'Lorem ipsum dolor sit amet, conse ctetur adipi scing elit, sed do eiusmod tempor incidi dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris idunt ut labore et dolore magna aliqua.', text2: 'Sed do eiusmod tempor incid idunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerc itation ullamco laboris.Tempor inci didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exerci tation ullamco laboris.' },
 ]
 
 export const NavbarLink = [

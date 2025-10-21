@@ -5,8 +5,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs";
 import { BiPhone } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
-import React from 'react'
-import footerbg from '/public/general/footer.png'
+ import footerbg from '/public/general/footer.png'
 import Image from '../general/image'
 import { footerAddress, footersLink, recentBlogPosts } from '../utils/utils'
 import { Link } from 'react-router'

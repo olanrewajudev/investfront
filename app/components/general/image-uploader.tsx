@@ -1,5 +1,4 @@
-import React from 'react'
-import { ErrorAlert } from '../utils/utils';
+ import { ErrorAlert } from '../utils/utils';
 import Image from './image';
 import { PiX } from "react-icons/pi";
 

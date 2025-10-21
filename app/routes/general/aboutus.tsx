@@ -1,11 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router'
+ import { Link } from 'react-router'
 import Image from '~/components/general/image'
 import banner from '../../../public/general/inside-bg.jpg'
 import video from '../../../public/general/video-md.jpg'
 import { FaPlay, FaRegCheckCircle } from 'react-icons/fa'
-import { CiPlay1 } from 'react-icons/ci'
-import { about, chooseus, clientsLogo } from '~/components/utils/utils'
+import {  chooseus, clientsLogo, services } from '~/components/utils/utils'
 
 export default function Aboutus() {
   return (
@@ -14,7 +12,7 @@ export default function Aboutus() {
         <div className="relative">
           <Image src={banner} className='h-[18rem] lg:h-[30rem] brightness-50 w-full object-cover object-left-bottom' />
           <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
-            <p className="font-semibold text-[3rem] lg:text-[4rem]">About Us</p>
+            <p className="font-medium text-[3rem] lg:text-[4rem]">About Us</p>
             <div className="flex items-center gap-2 font-medium mt-3">
               <Link to='' className='hover:text-yellow'>Home</Link> / <div className="">About Us  </div>
             </div>
@@ -69,7 +67,7 @@ export default function Aboutus() {
           </div>
 
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-7 text-center">
-            {about.map((item, i: number) => (
+            {services.map((item, i: number) => (
               <div className="flex items-center justify-center flex-col mb-12" key={i}>
                 <Image src={item.icon} className="rounded-tr-2xl rounded-tl-2xl xl:h-[15rem] w-full object-cover" />
                 <div className="bg-white shadow-2xl text-center rounded-br-2xl rounded-bl-2xl py-4 px-4">
