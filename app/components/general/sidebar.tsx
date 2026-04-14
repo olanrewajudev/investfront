@@ -35,7 +35,7 @@ export default function Sidebar({ closeView }: { closeView: () => void }) {
                             <div className="mx-5 my-3 overflow-auto flex items-end justify-end"><div className="flex items-center z-50 py-2 justify-between">
                                 <div className="text-3xl w-full bg-white/25 backdrop-blur-xl p-2 rounded-full shadow-2xl"><FaTimes className="cursor-pointer" onClick={handleClose} /></div></div>
                             </div> 
-                            <div className="mx-5">{NavbarLink.map((item) => (<div className="pb-3" key={item.id}><div className="w-full bg-white/25 backdrop-blur-xl py-5 rounded-full shadow-2xl"><Link to={item.href} className="font-bold px-5 flex items-center justify-between">{item.name}</Link></div></div>))}</div>
+                            <div className="mx-5">{NavbarLink.map((item) => (<div className="pb-3" key={item.id}><div className="w-full bg-white/25 backdrop-blur-xl py-5 rounded-full shadow-2xl"><Linked to={item.href} className="font-bold px-5 flex items-center justify-between">{item.name}</Linked></div></div>))}</div>
 
                         </motion.div>
                     </>

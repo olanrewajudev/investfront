@@ -1,50 +1,131 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Poppins", sans-serif, ui-sans-serif, system-ui,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #4A1B4A;
-  --color-yellow: #f7921a;
-  --color-primary-light: #F9F5FF;
-  --color-grayed: #F9FAFB;
+
+  --font-sans: "Nunito Sans", sans-serif;
+  --color-primary: #66bb93;
+  --color-primary-light: #CEE8CD;
+  --color-primary-lighter: #f2f7f6;
+  --color-primary-dark: #026849;
+  --color-background: #f8f8f8;
+  --color-dark-background: #F3F3F5;
+  --color-secondary-light: #FFF5E5;
+  --color-secondary: #ffdcad;
+  --color-secondary-b: #FFE3BF;
+  --color-secondary-dark: #8A4E0F;
+  --color-lime: #B1E568;
+  --color-lime-dark: #014D35;
+  --color-lime-light: #E5F3ED;
+  --font-base: "Ketchup", sans-serif;
+  --color-yellow: #FFD195;
+  --color-star-yellow: #F7971E;
+  --color-yellow-dark: #FFAC42;
+  --color-light-gray: #F9FAFB;
+  --color-text-gray: #99a1af;
+  --color-gray: #F9F9F9;
+  --color-deep-gray: #4A5565;
+  --color-dark-gray: #666666;
+  --color-border-gray: #E5E7EB;
+  --color-text-gray: #6A7282;
+  --color-lightest: #EEEEEE;
+  --color-light-green: #FFFEDB;
+  --color-green: #009966;
+  --color-dark-green: #E4FABF;
+  --color-formbg: #F3FFDF;
+  --color-bg: #f3f5f7;
+  --color-discount: #33946F;
+  --color-error-bg: #FF383C24;
+  --color-red: #FF383C;
+  --color-tableerror: #FF383C1A;
+  --color-error: #D63626;
+  --color-store-b: #E9EAEB;
+  --color-store-open: #CCE8DB;
+  --color-store-text: #013E28;
+  --color-neworder: #FBE8E6;
+  --color-prep: #B36A15;
+  --color-btn-green: #009966;
+  --color-iconbg-light: #fafafa;
+  --color-iconbg-dark: #f5f5f5;
+
+
+}
+
+
+@font-face {
+
+  font-family: "Ketchup";
+  src: url("/Ketchup-Manis-Demo-BF6685ff968e195.otf") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+
 }
 
 html,
 body {
+  @apply m-0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
-  overflow-x: hidden !important;
-  box-sizing: border-box !important;
-  overscroll-behavior: none;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
 
-.scrollsdown::-webkit-scrollbar {
-  height: 0px;
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.secimg {
+  object-position: center bottom;
+  object-fit: fill;
+}
+
+.no-scrolls {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrolls::-webkit-scrollbar {
+  display: none;
 }
 
 .scrolls::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 .scrolls::-webkit-scrollbar-thumb {
-  width: 5px;
+  width: 4px;
+
+  border-radius: 10px;
   background: lightgrey;
-  border-radius: 10rem;
 }
 
-
-
-.embla {
-  overflow: hidden;
+.scrollsdown::-webkit-scrollbar {
+  height: 4px;
 }
 
-.embla__container {
-  display: flex;
+.scrollsdown::-webkit-scrollbar-thumb {
+  height: 4px;
+
+  border-radius: 10px;
+  background: lightgrey;
 }
 
-.embla__slide {
-  flex: 0 0 100%;
-  min-width: 0;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+
+input[type=number] {
+  appearance: textfield;
 }

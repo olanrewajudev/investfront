@@ -1,53 +1,113 @@
-import { Checkbox, FormControl, FormControlLabel, FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material';
- import { Visibility, VisibilityOff } from '@mui/icons-material';
-import PhoneSelector from './phone-selector';
+import { PinInput, Textarea, TextInput } from "@mantine/core"
+import type { ForminputProps } from "global"
+import React, { forwardRef } from "react"
+import { IoChevronDown, IoSearch } from "react-icons/io5"
 
-type FormInputProps = {
-  onChange?: (value?: any) => void;
-  setup?: (value?: any) => void;
-  onClick?: () => void;
-  content: string;
-  placeholder?: string;
-  type?: string;
-  height?: string;
-  children?: React.ReactNode;
-  title?: string;
-  label?: string;
-  value?: any;
-  className?: string;
-  name?: string;
-  maxLength?: any;
-  iserror?: any;
-  phoneerror?: any;
-  formtype?: 'text' | 'checkbox' | 'select' | 'textarea' | 'password' | 'phone' | 'email' | 'number';
+type Option = {
+    label: string
+    value: string
 }
-export default function FormInput({ onChange, setup, onClick, content, placeholder, type = "text", height = "h-12", children, title, label, value, className, name, maxLength, iserror, phoneerror, formtype }: FormInputProps, ...refs: any[]) {
-  const [showpassword, setShowPassword] = React.useState(false);
-  const handlePasswordToggle = () => setShowPassword((show) => !show);
-  const handleMouseDown = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-  }
-  return (
-    <div>
-      <div className='mb-3'>
-        <div className="">{content}</div>
-        <FormControl fullWidth error={iserror} >
-          {formtype === 'text' && <OutlinedInput name={name} value={value} onChange={onChange} onClick={onClick} {...refs} />}
-          {label && <InputLabel className='' htmlFor='component-outlined'>{label}</InputLabel>}
-          {formtype === 'textarea' && <textarea maxLength={maxLength} name={name} value={value} onChange={onChange} onClick={onClick} {...refs} placeholder={placeholder} />}
-          {formtype === 'select' && <><Select labelId='demo-simple-select-label' name={name} value={value} onChange={onChange}><MenuItem value={''} >Select</MenuItem> {children} </Select></>}
-          {formtype === 'checkbox' && <FormControlLabel checked={value} name={name} value={value} onChange={onChange} onClick={onClick} {...refs} control={<Checkbox />} label={placeholder} />}
-          {formtype === 'password' && <><OutlinedInput name={name} value={value} onChange={onChange} type={showpassword ? 'text' : "password"} endAdornment={<InputAdornment position='end'><IconButton aria-label='' onClick={handlePasswordToggle} onMouseDown={handleMouseDown} edge='end'>{showpassword ? <VisibilityOff /> : <Visibility />}</IconButton></InputAdornment>} /></>}
-          {iserror && <FormHelperText>{iserror}</FormHelperText>}
-        </FormControl>
-      </div>
 
-      {formtype === 'phone' && <div className="relative -mt-5">
-        <div className={`flex items-center border ${phoneerror ? 'border-red-600' : 'border-zinc-400'} rounded-md`}><div className="w-1/5"><PhoneSelector title='' defaultvalue='+1' setup={setup ? setup : () => { }} /></div></div>
-        <div className="w-full"><input type="numer" name={name} value={value} onChange={onChange} className='w-full p-3 roumded-md' placeholder='Enter phone number' /></div>
-        {phoneerror && <div className='absolute -bottom-4 font-medium left-0 text-xs text-red-600 ml-4'>{phoneerror}</div>}
-      </div>}
-    </div >
+const Forminput = forwardRef<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement, ForminputProps & { options?: Option[], required?: boolean, textareaHeight?: string | number, maxLength?: string | number, withSearchIcon?: boolean }>(({ nobg = false, formtype = "input", options = [], required = false, textareaHeight, withSearchIcon, maxLength = false, ...props }, ref
+) => {
+    const formStyle = {
+        input: {
+            padding: withSearchIcon ? "1.2rem 1rem 1.5rem 3rem" : "1.2rem 1rem 1.5rem 1rem",
+            borderRadius: formtype === "textarea" ? "1rem" : "2rem",
+            height: formtype === "textarea" ? typeof textareaHeight === "number" ? `${textareaHeight}px` : textareaHeight || "13rem" : undefined,
+            width: "100%",
+            color: nobg ? "#fff" : "#000",
+            border: `1.1px solid ${props.error ? "#ff0000" : nobg ? "#E9EAEB" : "#E5E7EB"}`,
+            background: props.readOnly ? "#F2F2F2" : nobg ? "transparent" : "#fff",
+        },
+        labelRequired: { color: "#ff0000" },
+    }
 
-  )
+    return (
+        <div className="mb-0">
+            <div className={formtype === "select" ? "" : "mb-4"}>
+                {/* INPUT */}
+                {formtype === "input" && (
+                    <TextInput
+                        {...props}
+                        ref={ref as React.Ref<HTMLInputElement>}
+                        type={props.type}
+                        label={props.content}
+                        placeholder={props.placeholder}
+                        readOnly={props.readOnly}
+                        error={props.error}
+                        required={required}
+                        leftSection={withSearchIcon ? <IoSearch size={18} className="text-black relative -top-[2px]" /> : undefined}
+                        leftSectionWidth={withSearchIcon ? 44 : undefined}
+                        styles={formStyle}
+                        maxLength={maxLength ? Number(maxLength) : undefined}
+                    />
+                )}
+
+
+                {/* TEXTAREA */}
+                {formtype === "textarea" && (
+                    <Textarea
+                        {...props}
+                        ref={ref as React.Ref<HTMLTextAreaElement>}
+                        label={props.content}
+                        placeholder={props.placeholder}
+                        readOnly={props.readOnly}
+                        error={props.error}
+                        styles={formStyle}
+                        required={required}
+                    />
+                )}
+
+                {/* OTP */}
+                {formtype === "otp" && (
+                    <div>
+                        <PinInput
+                            {...props}
+                            ref={ref as React.Ref<HTMLInputElement>}
+                            readOnly={props.readOnly}
+                            type="alphanumeric"
+                            length={6}
+                            size="lg"
+                            placeholder=""
+                            error={props.pinerror === "true"}
+                            styles={{
+                                input: { border: "1.3px solid #000", fontSize: "2rem", color: "#000", },
+                            }}
+                        />
+
+                        {props.error && (<div className="text-red-400 text-xs mt-1">{props.error}</div>)}
+                    </div>
+                )}
+            </div>
+
+            {formtype === "select" && (
+                <div>
+                    {props.content && (
+                        <label className="mb-1 block text-sm">
+                            {props.content}
+                            {required && <span className="text-red-500 ml-1">*</span>}
+                        </label>
+                    )}
+
+                    <div className="relative ">
+                        <select ref={ref as React.Ref<HTMLSelectElement>} disabled={props.readOnly} {...props} className={`appearance-none outline-none bg-transparent pr-12  ${props.className ?? "w-full border border-gray-300 rounded-full py-2 px-4"}`}>
+                            {options.map((option: any, index: React.Key) => (
+                                <option key={index} value={option.value}>
+                                    {option.label}
+                                </option>
+                            ))}
+                        </select>
+                        <IoChevronDown className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg" />
+                    </div>
+
+                    {props.error && (<div className="text-red-500 text-xs mt-1">{props.error}</div>)}
+                </div>
+            )}
+        </div>
+    )
 }
+)
+
+Forminput.displayName = "Forminput"
+export default Forminput

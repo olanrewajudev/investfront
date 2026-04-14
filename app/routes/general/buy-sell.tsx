@@ -5,26 +5,29 @@ import image1 from '../../../public/general/icon-a.png'
 import image2 from '../../../public/general/icon-b.png'
 import { buyandsell } from '~/components/utils/utils'
 import TabPanel from '~/components/general/tab-panel'
+import Linked from '~/components/general/linked'
 export default function BuySell() {
+
     return (
         <div>
             <div className="">
                 <div className="relative">
-                    <Image src={banner} className='h-[18rem] lg:h-[35rem] brightness-50 w-full object-cover' />
+                    <Image src={banner} className='h-[18rem] lg:h-[30rem] brightness-50 w-full object-cover' />
                     <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
                         <p className="font-medium text-[3rem] lg:text-[4rem]">Buy Crypto</p>
                         <div className="flex items-center gap-2 font-medium mt-3">
-                            <Link to='' className='hover:text-yellow'>Home</Link> / <div className="">Buy Crypto  </div>
+                            <Linked to='' className='hover:text-yellow'>Home</Linked> / <div className="">Buy Crypto  </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div className='w-[80%] mx-auto'>
 
                 <div className="">
                     <div className="mt-32 grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
                         {buyandsell.map((item) => (
-                            <div className="bg-black/20 backdrop-blur-xl rounded-xl mb-4 flex items-center justify-center flex-col px-5 py-10 text-center" key={item.id}>
+                            <div className="bg-gray rounded-xl mb-4 flex items-center justify-center flex-col px-5 py-10 text-center" key={item.id}>
                                 <Image src={item.img} alt="" className=" w-[3rem]" />
                                 <p className="font-bold mb-1 mt-4 uppercase">{item.title}</p>
                                 <p className="text-sm">{item.text}</p>
@@ -33,10 +36,7 @@ export default function BuySell() {
                     </div>
                 </div>
 
-                <div className=" mt-28">
-                    <TabPanel />
-                </div>
-
+                <div className=" mt-28"><TabPanel /></div>
                 <div className="border my-28 border-gray-200"></div>
 
                 <div className="mb-32">

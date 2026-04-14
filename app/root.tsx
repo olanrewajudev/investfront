@@ -1,3 +1,4 @@
+
 import {
   isRouteErrorResponse,
   Links,
@@ -9,6 +10,20 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import '@mantine/core/styles.css';
+import '@mantine/dates/styles.css';
+import '@mantine/charts/styles.css';
+import { ColorSchemeScript, MantineProvider, createTheme, mantineHtmlProps } from '@mantine/core';
+import { Toaster } from "react-hot-toast";
+
+
+
+const theme = createTheme({
+  fontFamily: 'Nunito Sans',
+  headings: {
+    fontFamily: 'Nunito Sans',
+  },
+});
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -19,21 +34,38 @@ export const links: Route.LinksFunction = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap",
   },
+  {
+    rel: "preload",
+    href: `/Ketchup-Manis-Demo-BF6685ff968e195.otf`,
+    as: "font",
+    type: "font/otf",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "shortcut icon",
+    href: `/images/logo.png`,
+    type: "image/x-icon",
+  }
 ];
+
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" {...mantineHtmlProps}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <ColorSchemeScript />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="scrolls">
+          <MantineProvider theme={theme}>
+            {children}
+          </MantineProvider>
+
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -42,7 +74,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Toaster />
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

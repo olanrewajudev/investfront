@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router";
 import Image from "~/components/general/image";
 import banner from '../../../public/general/inside-bg.jpg';
 import { chooseus, serviceSingle } from "~/components/utils/utils";
+import Linked from '~/components/general/linked'
 
 export default function ServiceSingle() {
     const params = useParams() as { id?: string };
@@ -13,13 +14,13 @@ export default function ServiceSingle() {
             <div className="">
                 <div className="relative">
                     <Image src={banner} className='h-[18rem] lg:h-[30rem] brightness-50 w-full object-cover object-left-bottom' />
-                    <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col"><p className="font-medium text-[3rem] lg:text-[4rem]">Single Service</p><div className="flex items-center gap-2 font-medium mt-3"><Link to='' className='hover:text-yellow'>Home</Link> / <div className="">Single Service</div></div></div>
+                    <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col"><p className="font-medium text-[3rem] lg:text-[4rem]">Single Service</p><div className="flex items-center gap-2 font-medium mt-3"><Linked to='' className='hover:text-yellow'>Home</Linked> / <div className="">Single Service</div></div></div>
                 </div>
             </div>
 
-            <div className="w-[80%] mx-auto my-20">
+            <div className="w-[90%] mx-auto my-20">
                 {item ? (
-                    <div className="lg:flex gap-10  items-center justify-center">
+                    <div className="lg:flex items-center justify-center gap-10">
                         <div className="">
                             <p className="my-4 font-bold text-[2.5rem] capitalize">{item.title}</p>
                             <p className="pb-6 lg:text-lg base leading-7">{item.text}</p>
@@ -31,7 +32,7 @@ export default function ServiceSingle() {
                 ) : (
                     <div className="text-center py-12">
                         <p className="text-lg mb-4">Service not found.</p>
-                        <Link to="/service" className="text-white bg-black px-4 py-2 rounded">Back to Services</Link>
+                        <Linked to="/service" className="text-white bg-black px-4 py-2 rounded">Back to Services</Linked>
                     </div>
                 )}
             </div>
@@ -59,7 +60,7 @@ export default function ServiceSingle() {
                 <div className="relative">
                     <Image src={banner} className='h-[18rem] lg:h-[30rem] brightness-50 w-full object-cover object-left-bottom' />
                     <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
-                        <p className="font-medium text-[1.9rem] lg:text-[4rem]">Are you searching for a quick, cheap, and safe way to buy Bitcoins?</p>
+                        <p className="font-medium text-[1.9rem] lg:text-[2.5rem] lg:mx-[30rem]">Are you searching for a quick, cheap, and safe way to buy Bitcoins?</p>
                         <div className="hover:border-2 py-3 bg-yellow px-6 hover:border-yellow hover:bg-transparent rounded-3xl mt-10">Buy Bitcoin</div>
                     </div>
                 </div>

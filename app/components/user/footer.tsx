@@ -9,6 +9,7 @@ import { CiLocationOn } from "react-icons/ci";
 import Image from '../general/image'
 import { footerAddress, footersLink, recentBlogPosts } from '../utils/utils'
 import { Link } from 'react-router'
+import Linked from "../general/linked";
 export default function UserFooter() {
   const date = new Date()
   const fullYear = date.getFullYear()
@@ -22,7 +23,7 @@ export default function UserFooter() {
               <div className="text-white text-lg font-semibold">{_item.title}</div>
               <div className="text-white grid grid-cols-1 gap-5 mt-4 text-base font-semibold">
                 {_item.links.map((link, i: number) => (
-                  <Link key={i} to={link.href}>{link.name}</Link>
+                  <Linked key={i} to={link.href}>{link.name}</Linked>
                 ))}
               </div>
             </div>

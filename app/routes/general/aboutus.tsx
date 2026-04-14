@@ -1,9 +1,10 @@
- import { Link } from 'react-router'
+import { Link } from 'react-router'
 import Image from '~/components/general/image'
 import banner from '../../../public/general/inside-bg.jpg'
 import video from '../../../public/general/video-md.jpg'
 import { FaPlay, FaRegCheckCircle } from 'react-icons/fa'
-import {  chooseus, clientsLogo, services } from '~/components/utils/utils'
+import { chooseus, clientsLogo, services } from '~/components/utils/utils'
+import Linked from '~/components/general/linked'
 
 export default function Aboutus() {
   return (
@@ -14,7 +15,7 @@ export default function Aboutus() {
           <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
             <p className="font-medium text-[3rem] lg:text-[4rem]">About Us</p>
             <div className="flex items-center gap-2 font-medium mt-3">
-              <Link to='' className='hover:text-yellow'>Home</Link> / <div className="">About Us  </div>
+              <Linked to='' className='hover:text-yellow'>Home</Linked> / <div className="">About Us  </div>
             </div>
           </div>
         </div>
@@ -75,7 +76,7 @@ export default function Aboutus() {
                     <p className="my-4 font-bold text-lg capitalize">{item.title}</p>
                     <p className="pb-6 text-sm xl:text-base">{item.text}</p>
                   </div>
-                  <Link to='' className=""> <div className="uppercase rounded-full bg-black text-white px-6 font-bold py-3 right-0 ">read more</div></Link>
+                  <Linked to='' className=""> <div className="uppercase rounded-full bg-black text-white px-6 font-bold py-3 right-0 ">read more</div></Linked>
                 </div>
 
               </div>

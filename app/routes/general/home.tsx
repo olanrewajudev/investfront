@@ -1,7 +1,7 @@
 import HomeCarousel from "~/components/general/home-carousel";
 import type { Route } from "./+types/home";
 import { clientsLogo, homeabout, recentBlogPosts, reviews } from "~/components/utils/utils";
-import { Link } from "react-router";
+import Linked from '~/components/general/linked'
 import bitcoin from '../../../public/general/photo-md-a.jpg'
 import chart from '../../../public/general/calc-bg.jpg'
 import CurrencyConverter from "~/components/general/currency-converter";
@@ -46,7 +46,7 @@ export default function Home() {
             <p className="font-bold text-[1.5rem] md:text-[2rem] mb-4 ">Bitcoin is an innovative & a new kind of money.</p>
             <p className="mb-3 leading-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
             <p className="mb-12 leading-8">Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-            <Link to='' className="uppercase rounded-full bg-black text-white px-9 font-bold py-5 hover:text-black hover:border border-yellow hover:bg-white hover:transition-all hover:ease-in-out mt-">read more</Link>
+            <Linked to='' className="uppercase rounded-full bg-black text-white px-9 font-bold py-5 hover:text-black hover:border border-yellow hover:bg-white hover:transition-all hover:ease-in-out mt-">read more</Linked>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function Home() {
           </div>
           <p className="mb-4 leading-8">Looking to get started in the world of cryptocurrency trading sit amet tristique?</p>
           <p className="leading-8 mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc et lorem nec felis finibus laoreet. Nullam id dictum urna. Vestibulum in aliquam tellus, sit amet tristique ipsum.</p>
-          <Link to='' className="uppercase rounded-full bg-black text-white px-9 font-bold py-5 hover:text-black hover:border border-yellow hover:bg-white hover:transition-all hover:ease-in-out mt-">read more</Link>
+          <Linked to='' className="uppercase rounded-full bg-black text-white px-9 font-bold py-5 hover:text-black hover:border border-yellow hover:bg-white hover:transition-all hover:ease-in-out mt-">read more</Linked>
 
         </div>
       </div>
@@ -176,7 +176,7 @@ export default function Home() {
                     <p className="my-4 font-bold text-lg">{item.title}</p>
                     <p className="pb-6 text-sm lg:text-base">{item.content}</p>
                   </div>
-                  <Link to='' className=""> <div className="uppercase rounded-full bg-black text-white px-6 font-bold py-3 right-0 ">read more</div></Link>
+                  <Linked to='' className=""> <div className="uppercase rounded-full bg-black text-white px-6 font-bold py-3 right-0 ">read more</div></Linked>
                 </div>
               </div>
             ))}

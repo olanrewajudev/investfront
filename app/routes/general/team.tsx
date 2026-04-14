@@ -15,7 +15,7 @@ export default function Team() {
           <div className="absolute inset-0 text-white flex items-center justify-center text-center flex-col">
             <p className="font-medium text-[3rem] lg:text-[4rem]">Expert Team</p>
             <div className="flex items-center gap-2 font-medium mt-3">
-              <Link to='' className='hover:text-yellow'>Home</Link> / <div className="">Team  </div>
+              <Linked to='' className='hover:text-yellow'>Home</Linked> / <div className="">Team  </div>
             </div>
           </div>
         </div>

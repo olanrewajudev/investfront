@@ -48,24 +48,61 @@ export const ErrorAlert = (message: Renderable | ValueFunction<Renderable, Toast
     );
 }
 
+
+export const formatTimeAgo = (dateString: string) => {
+    const diff = Date.now() - new Date(dateString).getTime()
+    const minutes = Math.floor(diff / 1000 / 60)
+    return minutes < 60 ? `${minutes}m ago` : `${Math.floor(minutes / 60)}h ago`
+}
+export function formatDate(date?: string) {
+    if (!date) return ""
+    return new Date(date)
+        .toLocaleDateString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+        })
+        .replace(/\//g, "-")
+}
+export function formatTime(date?: string) {
+    if (!date) return "";
+
+    return new Date(date).toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+    });
+}
+export const formatCustomDate = (date: string) => {
+    const d = new Date(date);
+
+    const month = d.toLocaleString("en-US", { month: "short" });
+    const day = d.getDate();
+    const year = d.getFullYear();
+
+    return `${month} ${day} ${year}`;
+};
+export const formatCurrency = (amount: number | string) => {
+    if (!amount) return "0";
+    return Number(amount).toLocaleString();
+};
+
 export const headerFirstLink = [
     { title: "Help", href: '' },
     { title: "Support", href: '' },
-    { title: "Login", href: '' },
-    { title: "Register", href: '' }
 ]
 export const headerSecondLink = [
     { title: "Home", href: '/' },
     { title: "About Us", href: '/about-us' },
     { title: "Service", href: '/service' },
     { title: "Buy & Sell", href: '/buy-and-sell' },
-    { title: "Contact Us", href: '' }
+    { title: "Contact Us", href: '/contact-us' }
 ]
 export const footersLink = [
     {
         title: 'SERVICES',
         links: [
-            { name: 'Buy Crypto', href: '', isNew: false },
+            { name: 'Buy Crypto', href: '/how-it-works', isNew: false },
             { name: 'Crypto Trading', href: '', isNew: false },
             { name: 'Margin Trading', href: '', isNew: false },
             { name: 'Market Data', href: '', isNew: false },
@@ -283,10 +320,9 @@ export const serviceSingle = [
 ]
 
 export const NavbarLink = [
-    { id: 1, href: "/", name: 'HOME' },
-    { id: 2, href: "/Shopmen", name: 'SHOP MEN' },
-    { id: 3, href: "/Shopwomen", name: 'SHOP WOMEN' },
-    { id: 4, href: "/Newarrival", name: 'NEW ARRIVAL' },
-    { id: 5, href: "/Newarrival", name: 'FOOT WEARS' },
-    { id: 6, href: "/Newarrival", name: 'WRIST WATCH' },
+    { id: 1, href: "/", name: 'Home' },
+    { id: 2, href: "/about-us", name: 'About Us' },
+    { id: 3, href: "/service", name: 'Service' },
+    { id: 4, href: "/buy-and-sell", name: 'Buy & Sell' },
+    { id: 5, href: "/contact-us", name: 'Contact Us' },
 ]
