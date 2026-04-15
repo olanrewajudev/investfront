@@ -1,4 +1,4 @@
-import { type RouteConfig, index, layout, route } from "@react-router/dev/routes";
+import { type RouteConfig, index, layout, prefix, route } from "@react-router/dev/routes";
 
 export default [
     layout('./Layout/user-layout.tsx', [
@@ -11,6 +11,20 @@ export default [
         route("/service", "routes/general/service.tsx"),
         route("/service/:id", "routes/general/service-single.tsx"),
         route("/testimonial", "routes/general/testimonials.tsx"),
-    ])
+        route("/terms-of-service", "routes/general/termsofservice.tsx"),
+        route("/privacy-policy", "routes/general/privacy-policy.tsx"),
+        route("/health", "routes/general/health.tsx"),
+        route("/admin/login", "routes/admin/form/login.tsx"),
+        route("/admin/signup", "routes/admin/form/signup.tsx"),
+    ]),
+
+    layout("./Layout/admin-layout.tsx", [
+        ...prefix("admin", [
+            route("home-dashboard", "routes/admin/dashboard.tsx"),
+
+
+
+        ])
+    ]),
 
 ] satisfies RouteConfig;

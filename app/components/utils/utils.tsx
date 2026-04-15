@@ -23,32 +23,46 @@ import service3 from '../../../public/general/service-thumb-c.jpg'
 import service4 from '../../../public/general/service-thumb-d.jpg'
 import service5 from '../../../public/general/service-thumb-e.jpg'
 import service6 from '../../../public/general/service-thumb-f.jpg'
+import { BiHome } from "react-icons/bi";
 
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
-    toast.success(message,
-        {
-            icon: '👏',
-            style: {
-                borderRadius: '10px',
-                background: '#333',
-                color: '#fff',
-            },
-        }
-    );
-}
-export const ErrorAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
-    toast.error(message,
-        {
-            style: {
-                borderRadius: '10px',
-                background: '#333',
-                color: '#fff',
-            },
-        }
-    );
-}
+    return toast.success(message, {
+        duration: 6000,
+        style: {
+            borderRadius: '20px',
+            background: '#fff',
+            color: '#333',
+            padding: '10px 18px',
+            fontSize: '17px',
+            minWidth: '320px',
+        },
+    });
+};
 
 
+export const ErrorAlert = (message: string) => {
+    return toast.error(message, {
+        duration: 7000,
+        style: {
+            borderRadius: '20px',
+            background: '#fff',
+            color: '#333',
+            padding: '10px 18px',
+            fontSize: '17px',
+            minWidth: '320px',
+        },
+    });
+};
+
+export const adminSidebar = [
+    { title: 'Home', url: [`/admin/home-dashboard`, `/admin/home-dashboard/recipes`], Icon: BiHome },
+    { title: 'Customers', url: [``], Icon: BiHome },
+    { title: 'Kyc Management', url: [``], Icon: BiHome },
+    { title: 'Plans', url: [``], Icon: BiHome },
+    { title: 'Deposit', url: [``], Icon: BiHome },
+    { title: 'Withdraw', url: [``], Icon: BiHome },
+    { title: 'Transaction', url: [``], Icon: BiHome },
+]
 export const formatTimeAgo = (dateString: string) => {
     const diff = Date.now() - new Date(dateString).getTime()
     const minutes = Math.floor(diff / 1000 / 60)

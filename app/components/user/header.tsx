@@ -42,9 +42,9 @@ export default function UserHeader() {
         </div>
       </Drawer>
       <Modal.Stack>
-        <Modal size={'32rem'} withCloseButton={false} centered {...stack.register('login')}> <Login stack={stack} /> </Modal>
-        <Modal size={'32rem'} withCloseButton={false} centered {...stack.register('signup')}><Signup stack={stack} setVerifyEmail={setVerifyEmail} /></Modal>
-        <Modal size={'32rem'} withCloseButton={false} centered {...stack.register('otp')}><VerifyEmail /></Modal>
+        <Modal size={'32rem'} className='no-scrolls' withCloseButton={false} centered {...stack.register('login')}> <Login stack={stack} /> </Modal>
+        <Modal size={'35rem'} className='no-scrolls' withCloseButton={false} centered {...stack.register('signup')}><Signup stack={stack} setVerifyEmail={setVerifyEmail} /></Modal>
+        <Modal size={'35rem'} className='no-scrolls' withCloseButton={false} centered {...stack.register('otp')}><VerifyEmail stack={stack} email={''} tag={'REGISTRATION'} /></Modal>
       </Modal.Stack>
       <div className="">
         <div className="flex items-center justify-between xl:px-32 px-10 bg-neutral-900 text-white py-3 font-medium">
@@ -65,8 +65,8 @@ export default function UserHeader() {
           {headerSecondLink.map((item, i: number) => (
             <Linked key={i} to={item.href} className='hover:text-yellow'>{item.title}</Linked>
           ))}
-          <div onClick={() => stack.open('login')} className="bg-neutral-900 text-white px-6 py-1.5 rounded-full hover:bg-yellow hover:text-black">Login</div>
-          <div onClick={() => stack.open('signup')} className="bg-neutral-900 text-white px-6 py-1.5 rounded-full hover:bg-yellow hover:text-black">Sign Up</div>
+          <div onClick={() => stack.open('login')} className="bg-neutral-900 text-white px-6 py-1.5 rounded-full cursor-pointer hover:bg-yellow-dark hover:text-black">Login</div>
+          <div onClick={() => stack.open('signup')} className="bg-neutral-900 text-white px-6 py-1.5 rounded-full cursor-pointer hover:bg-yellow-dark hover:text-black">Sign Up</div>
         </div>
         <div onClick={open} className="lg:hidden block"><SlMenu size={20} /></div>
       </div>

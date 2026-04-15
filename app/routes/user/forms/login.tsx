@@ -6,16 +6,22 @@ import FormButton from "~/components/general/form-button";
 import Forminput from "~/components/general/form-input";
 import type { AuthModal } from "~/components/user/header";
 import Signup from "./signup";
+import { decodeToken } from 'react-jwt';
 
 import { useForm } from "@mantine/form"
 import Linked from "~/components/general/linked";
+import { ErrorAlert, HotAlert } from "~/components/utils/utils";
+import { Apis, CookieName, Posturl } from "~/components/general/api";
+import { useDispatch } from "react-redux";
+import { dispatchToken } from "~/Lib/reducer";
+import Cookies from "js-cookie";
 
 export default function Login({ stack }: { stack: ReturnType<typeof useModalsStack<AuthModal>> }) {
   const [pass1, setPass1] = useState(false);
   const Icon1 = pass1 ? FaEye : FaEyeSlash;
   const [verifyEmail, setVerifyEmail] = useState("")
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const form = useForm({
     mode: "uncontrolled", initialValues: { email: '', password: '', },
     validate: {
@@ -25,15 +31,33 @@ export default function Login({ stack }: { stack: ReturnType<typeof useModalsSta
   })
 
   async function HandleSubmission(values: typeof form.values) {
-    console.log(values)
+
+    try {
+      const res = await Posturl(Apis.users.login, values)
+      console.log(res.status)
+      if (res.data.status === 402) {
+        stack.close('login')
+        stack.open('otp')
+      } else if (res.status === 200) {
+        const token = res.data.token;
+        Cookies.set(CookieName, token);
+        const decoded = decodeToken(token);
+
+        stack.close('login')
+
+      }
+      HotAlert(res.data.msg)
+    } catch (error) {
+      ErrorAlert((error as Error).message)
+    }
   }
 
   return (
     <div>
       <div className=''>
-       
+
         <div className="flex items-center justify-center no-scrolls py-7 gap-10 mb-">
-          <div className="text-lime-dark text-center font-extrabold text-4xl md:text-5xl font-base w-3/4">Log In</div>
+          <div className="text-yellow-dark text-center font-extrabold text-4xl md:text-5xl font-base w-3/4">Log In</div>
         </div>
         <form onSubmit={form.onSubmit(HandleSubmission)}>
           <Forminput content="Username or Email" error={form.errors.email?.toString() || ''}{...form.getInputProps("email")} placeholder='Username or Email' />
@@ -46,11 +70,11 @@ export default function Login({ stack }: { stack: ReturnType<typeof useModalsSta
           <div className="space-y-3 mt-5">
             <div className="mb-5">
               By continuing, you agree to our
-              <Linked className='text-lime-dark font-bold underline' to=""> Terms of Service,</Linked>
-              <Linked className='text-lime-dark font-bold underline' to=""> Privacy Policy</Linked> &
-              <Linked className='text-lime-dark font-bold underline' to=""> Health Data Notice</Linked>
+              <Linked className='text-yellow-dark font-bold underline' to="/terms-of-service"> Terms of Service,</Linked>
+              <Linked className='text-yellow-dark font-bold underline' to="/privacy-policy"> Privacy Policy</Linked> &
+              <Linked className='text-yellow-dark font-bold underline' to="/health"> Health Data Notice</Linked>
             </div>
-            <FormButton title="Continue" className='bg-lime-dark text-white' loading={form.submitting} />
+            <FormButton title="Continue" className='bg-yellow-dark text-white' loading={form.submitting} />
             <div className="text-center flex items-center justify-center gap-1 mt-5">Don’t have an account?<div className="underline cursor-pointer" onClick={() => { stack.close('login'); stack.open('signup') }}>Sign Up</div>
             </div>
             <div className="text-center mt-5 font-bold cursor-pointer">Forgot Password?</div>

@@ -30,7 +30,7 @@ export default function Home() {
       <div className="">
         <div className="my-20 grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 gap-5 w-[85%] mx-auto">
           {homeabout.map((item) => (
-            <div className="bg-black/20 backdrop-blur-xl rounded-xl mb-4 flex items-center justify-center flex-col px-5 py-10 text-center" key={item.id}>
+            <div className="bg-gray rounded-xl mb-4 flex items-center justify-center flex-col px-5 py-10 text-center" key={item.id}>
               <Image src={item.img} alt="" className=" w-[3rem]" />
               <p className="font-bold mb-1 mt-4 uppercase">{item.title}</p>
               <p className="text-sm">{item.text}</p>
@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="bg-black/20 backdrop-blur-xl md:py-32 py-24 ">
+      <div className="bg-gray md:py-32 py-24 ">
         <div className="lg:flex items-center gap-10 w-[85%] mx-auto">
           <Image src={bitcoin} alt="" className="rounded-xl lg:w-[30rem]" />
           <div className="mt-10">
@@ -143,7 +143,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mt-[10rem] bg-black/10 py-20 px-10">
+      <div className="mt-[10rem] bg-gray py-20 px-10">
         <div className="text-center px-5 lg:px-32 mb-16">
           <p className="font-bold text-[2.5rem] mb-3 lg:text-[4rem]">What investors say</p>
           <p className="text-lg">Sed ut perspi ciatis unde omnis iste natus error sit volup tatem accusa ntium dolor emque lauda ntium, totam rem aperiam</p>

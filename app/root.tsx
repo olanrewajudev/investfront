@@ -15,7 +15,8 @@ import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
 import { ColorSchemeScript, MantineProvider, createTheme, mantineHtmlProps } from '@mantine/core';
 import { Toaster } from "react-hot-toast";
-
+import { Provider } from 'react-redux'
+import { store } from "./Lib/store";
 
 
 const theme = createTheme({
@@ -62,9 +63,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body className="scrolls">
-          <MantineProvider theme={theme}>
+        <MantineProvider theme={theme}>
+          <Provider store={store}>
             {children}
-          </MantineProvider>
+          </Provider>,
+
+        </MantineProvider>
 
         <ScrollRestoration />
         <Scripts />
