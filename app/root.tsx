@@ -66,7 +66,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <MantineProvider theme={theme}>
           <Provider store={store}>
             {children}
-          </Provider>,
+          </Provider>
 
         </MantineProvider>
 

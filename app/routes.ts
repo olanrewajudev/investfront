@@ -1,7 +1,7 @@
 import { type RouteConfig, index, layout, prefix, route } from "@react-router/dev/routes";
 
 export default [
-    layout('./Layout/user-layout.tsx', [
+    layout('./Layout/general-layout.tsx', [
         index("routes/general/home.tsx"),
         route("/about-us", "routes/general/aboutus.tsx"),
         route("/team", "routes/general/team.tsx"),
@@ -22,7 +22,17 @@ export default [
         ...prefix("admin", [
             route("home-dashboard", "routes/admin/dashboard.tsx"),
 
-
+        ])
+    ]),
+    layout("./Layout/user-layout.tsx", [
+        ...prefix("user", [
+            route("dashboard", "routes/user/dashboard.tsx"),
+            route("kyc", "routes/user/kyc.tsx"),
+            route("plans", "routes/user/plans.tsx"),
+            route("deposit", "routes/user/deposit.tsx"),
+            route("withdraw", "routes/user/withdraw.tsx"),
+            route("transactions", "routes/user/transaction.tsx"),
+            route("settings", "routes/user/settings.tsx"),
 
         ])
     ]),

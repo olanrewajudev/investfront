@@ -13,7 +13,7 @@ import Linked from "~/components/general/linked";
 import { ErrorAlert, HotAlert } from "~/components/utils/utils";
 import { Apis, CookieName, Posturl } from "~/components/general/api";
 import { useDispatch } from "react-redux";
-import { dispatchToken } from "~/Lib/reducer";
+import { dispatchLoggedin, dispatchRole, dispatchToken } from "~/Lib/reducer";
 import Cookies from "js-cookie";
 
 export default function Login({ stack }: { stack: ReturnType<typeof useModalsStack<AuthModal>> }) {
@@ -41,12 +41,19 @@ export default function Login({ stack }: { stack: ReturnType<typeof useModalsSta
       } else if (res.status === 200) {
         const token = res.data.token;
         Cookies.set(CookieName, token);
-        const decoded = decodeToken(token);
+        // update redux
+        dispatch(dispatchToken(token));
+        dispatch(dispatchLoggedin(true));
+        const decoded: any = decodeToken(token);
 
+        if (decoded?.role) {
+          dispatch(dispatchRole(decoded.role));
+        }
         stack.close('login')
-
       }
       HotAlert(res.data.msg)
+      navigate('/user/dashboard');
+
     } catch (error) {
       ErrorAlert((error as Error).message)
     }

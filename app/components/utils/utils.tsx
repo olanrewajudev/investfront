@@ -63,6 +63,15 @@ export const adminSidebar = [
     { title: 'Withdraw', url: [``], Icon: BiHome },
     { title: 'Transaction', url: [``], Icon: BiHome },
 ]
+export const UserSidebar = [
+    { title: 'Home', url: [`/user/dashboard`], Icon: BiHome },
+    { title: 'Kyc', url: [`/user/kyc`], Icon: BiHome },
+    { title: 'Plans', url: [`/user/plans`], Icon: BiHome },
+    { title: 'All Deposit', url: [`/user/deposit`], Icon: BiHome },
+    { title: 'All Withdraw', url: [`/user/withdraw`], Icon: BiHome },
+    { title: 'All Transaction', url: [`/user/transactions`], Icon: BiHome },
+    { title: 'Settings', url: [`/user/settings`], Icon: BiHome },
+]
 export const formatTimeAgo = (dateString: string) => {
     const diff = Date.now() - new Date(dateString).getTime()
     const minutes = Math.floor(diff / 1000 / 60)
@@ -111,6 +120,17 @@ export const headerSecondLink = [
     { title: "Service", href: '/service' },
     { title: "Buy & Sell", href: '/buy-and-sell' },
     { title: "Contact Us", href: '/contact-us' }
+]
+export const userSideBar = [
+    { id: 1, title: "Home", href: '/' },
+    { id: 2, title: "All Plans", href: '/' },
+    { id: 3, title: "Investments", href: '/' },
+    { id: 5, title: "Add Money", href: '/' },
+    { id: 6, title: "Withdraw", href: '/' },
+    { id: 7, title: "Referral", href: '/' },
+    { id: 8, title: "Settings", href: '/' },
+    { id: 4, title: "All Transactions", href: '/' },
+
 ]
 export const footersLink = [
     {
