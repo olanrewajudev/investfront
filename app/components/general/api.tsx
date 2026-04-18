@@ -15,6 +15,7 @@ const user_urls = {
   profile: `user/profile`,
   updatepassword: `user/update-password`,
   logout: `user/logout`,
+  uploadkyc: `user/upload-kyc`,
 };
 const admin_urls = {
 

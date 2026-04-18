@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router'
 import { useEffect, useState } from 'react'
 import { Apis, AuthGeturl, CookieName } from '~/components/general/api'
-import { dispatchProfile, dispatchRole } from '~/Lib/reducer'
+import { dispatchLoggedin, dispatchProfile, dispatchRole } from '~/Lib/reducer'
 import { ErrorAlert } from '~/components/utils/utils'
 import type { RootState } from '~/Lib/store'
 import Header from '~/components/user/auth/header'
@@ -31,6 +31,7 @@ export default function UserLayout() {
           const response = await AuthGeturl(Apis.users.profile)
           dispatch(dispatchProfile(response.msg))
           dispatch(dispatchRole(response.msg.role))
+          dispatch(dispatchLoggedin(true))
         }
       } catch (error) {
         ErrorAlert((error as Error).message)

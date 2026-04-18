@@ -22,6 +22,7 @@ export default function UserHeader() {
   const stack = useModalsStack<AuthModal>(['login', 'signup', 'otp']);
   const [verifyEmail, setVerifyEmail] = useState("")
   const { isLoggedin } = useSelector((state: RootState) => state.data)
+  console.log(isLoggedin)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 55) {

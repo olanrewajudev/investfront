@@ -41,19 +41,12 @@ export default function Login({ stack }: { stack: ReturnType<typeof useModalsSta
       } else if (res.status === 200) {
         const token = res.data.token;
         Cookies.set(CookieName, token);
-        // update redux
         dispatch(dispatchToken(token));
-        dispatch(dispatchLoggedin(true));
-        const decoded: any = decodeToken(token);
-
-        if (decoded?.role) {
-          dispatch(dispatchRole(decoded.role));
-        }
+        HotAlert(res.data.msg)
+        navigate('/user/dashboard');
         stack.close('login')
-      }
-      HotAlert(res.data.msg)
-      navigate('/user/dashboard');
 
+      }
     } catch (error) {
       ErrorAlert((error as Error).message)
     }

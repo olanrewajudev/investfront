@@ -25,7 +25,7 @@ export default function dashboard() {
       <div className="md:flex items-start justify-between border-b px-4 py-4 border-lightest">
         <div className="flex items-center flex-col gap ">
           <Image src={profile.image || '/general/user.png'} className="size-16" />
-          <div className="text-center">{profile.username}</div>
+          <div className="text-center">{profile.firstName} {profile.lastName}</div>
         </div>
         <div className="">
           <div className="">Referral Code</div>

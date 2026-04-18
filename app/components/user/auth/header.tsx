@@ -53,11 +53,11 @@ export default function Header() {
                         </div>
                         <div className="relative">
                             <Forminput content="New Password" error={form.errors.password?.toString() || ""} {...form.getInputProps("password")} placeholder="Password" type={pass1 ? "text" : "password"} />
-                            <div onClick={() => setPass2(!pass2)} className="absolute right-4 top-9.5 cursor-pointer text-dark-gray"><Icon1 /></div>
+                            <div onClick={() => setPass2(!pass2)} className="absolute right-4 top-9.5 cursor-pointer text-dark-gray"><Icon2 /></div>
                         </div>
                         <div className="relative">
                             <Forminput content="Confirm New Password" error={form.errors.confirm_password?.toString() || ""} {...form.getInputProps("confirm_password")} placeholder="Password" type={pass1 ? "text" : "password"} />
-                            <div onClick={() => setPass3(!pass3)} className="absolute right-4 top-9.5 cursor-pointer text-dark-gray"><Icon1 /></div>
+                            <div onClick={() => setPass3(!pass3)} className="absolute right-4 top-9.5 cursor-pointer text-dark-gray"><Icon3 /></div>
                         </div>
 
                         <Formbutton title='Change' />
@@ -65,7 +65,7 @@ export default function Header() {
                 </div>
             </Modal>
             <Drawer className='' opened={sidebarOpened} onClose={closeSidebar} position='left' withCloseButton={false} >
-                <div className="flex items-center justify-between  border border rounded-full px-4 py-1">
+                <div className="flex items-center justify-between border rounded-full px-4 py-1">
                     <Linked to='/user/dashboard' className=""> <Image src='/general/logo.png' alt="Cryptocoin" className="w-[13rem]" /> </Linked>
                     <div onClick={closeSidebar} className="cursor-pointer"><LiaTimesSolid /></div>
                 </div>

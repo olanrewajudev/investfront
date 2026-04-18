@@ -34,12 +34,15 @@ export default function VerifyEmail({ stack, email, tag, onSuccess }: VerifyEmai
     try {
       const res = await AuthPosturl(Apis.users.acceptotp, { email, code: values.otp, tag })
       console.log(res.status)
-      if (res?.status === 200) {
+      if (res?.data.status === 400) {
+        ErrorAlert(res.data.msg)
+      }  else if (res?.data.status === 200) {
         stack?.close('otp')
         stack?.open('login')
         onSuccess?.()
+              HotAlert(res.data.msg)
+
       }
-      HotAlert(res.data.msg)
     } catch (error) {
       ErrorAlert((error as Error).message);
     }

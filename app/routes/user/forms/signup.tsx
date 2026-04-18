@@ -15,6 +15,7 @@ export default function Signup({ stack, setVerifyEmail }: { stack: ReturnType<ty
   const [pass2, setPass2] = useState(false);
   const Icon1 = pass1 ? FaEye : FaEyeSlash;
   const Icon2 = pass2 ? FaEye : FaEyeSlash;
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     mode: "uncontrolled", initialValues: { email: '', firstName: '', lastName: '', username: '', password: '', confirmPassword: '', phone: '' },
     validate: {
@@ -30,14 +31,20 @@ export default function Signup({ stack, setVerifyEmail }: { stack: ReturnType<ty
   })
   async function HandleSubmission(values: typeof form.values) {
     try {
-      const res = await Posturl(Apis.users.signup, values)
-      HotAlert(res.data.msg)
-      if (res.status === 200) {
-        stack.close('signup')
-        stack.open('otp')
+      setLoading(true);
+      const res = await Posturl(Apis.users.signup, values);
+
+      if (res.data.status === 400) {
+        ErrorAlert(res.data.msg);
+      } else if (res.status === 200) {
+        stack.close('signup');
+        stack.open('otp');
+        HotAlert(res.data.msg);
       }
     } catch (error) {
-      ErrorAlert((error as Error).message)
+      ErrorAlert((error as Error).message);
+    } finally {
+      setLoading(false);
     }
   }
 
