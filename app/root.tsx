@@ -12,7 +12,7 @@ import "./app.css";
 import '@mantine/core/styles.css';
 import '@mantine/dates/styles.css';
 import '@mantine/charts/styles.css';
-
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import {
   ColorSchemeScript,
   MantineProvider,
@@ -58,6 +58,7 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const queryClient = new QueryClient()
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -69,11 +70,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
 
       <body className="scrolls">
-        <MantineProvider theme={theme}>
-          <Provider store={store}>
-            {children}
-          </Provider>
-        </MantineProvider>
+        <QueryClientProvider client={queryClient}>
+          <MantineProvider theme={theme}>
+            <Provider store={store}>
+              {children}
+            </Provider>
+          </MantineProvider>
+        </QueryClientProvider>
 
         <ScrollRestoration />
         <Scripts />
@@ -81,7 +84,6 @@ export function Layout({ children }: { children: React.ReactNode }) {
     </html>
   );
 }
-
 export default function App() {
   return (
     <>

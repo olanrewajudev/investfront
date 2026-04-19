@@ -53,15 +53,22 @@ export const ErrorAlert = (message: string) => {
         },
     });
 };
+export const formatAmount = (amount?: number) => {
+    if (typeof amount !== "number") return "0.00";
 
+    return amount.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+};
 export const adminSidebar = [
-    { title: 'Home', url: [`/admin/home-dashboard`, `/admin/home-dashboard/recipes`], Icon: BiHome },
-    { title: 'Customers', url: [``], Icon: BiHome },
-    { title: 'Kyc Management', url: [``], Icon: BiHome },
-    { title: 'Plans', url: [``], Icon: BiHome },
-    { title: 'Deposit', url: [``], Icon: BiHome },
-    { title: 'Withdraw', url: [``], Icon: BiHome },
-    { title: 'Transaction', url: [``], Icon: BiHome },
+    { title: 'Home', url: [`/admin/home-dashboard`], Icon: BiHome },
+    { title: 'Customers', url: [`/admin/customer`], Icon: BiHome },
+    { title: 'Kyc Management', url: [`/admin/kyc`], Icon: BiHome },
+    { title: 'Plans', url: [`/admin/plan`], Icon: BiHome },
+    { title: 'Deposit', url: [`/admin/deposit`], Icon: BiHome },
+    { title: 'Withdraw', url: [`/admin/withdraw`], Icon: BiHome },
+    { title: 'Transaction', url: [`/admin/transactions`], Icon: BiHome },
 ]
 export const UserSidebar = [
     { title: 'Home', url: [`/user/dashboard`], Icon: BiHome },

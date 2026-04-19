@@ -63,7 +63,6 @@ export default function UserHeader() {
         </div>
       </div>
 
-
       <div className={`flex items-center justify-between text-center bg-white/30 backdrop-blur-xl shadow-2xl py-5 px-10 xl:px-32 z-50 w-full mx-auto ${scroll ? 'fixed -mt-12' : 'py-5'}`}>
         <Linked to='/' className=""> <Image src='/general/logo.png' alt="Cryptocoin" className="w-[13rem]" /> </Linked>
         <div className="gap-8 lg:flex font-medium  justify-center items-center hidden">

@@ -14,13 +14,19 @@ export default [
         route("/terms-of-service", "routes/general/termsofservice.tsx"),
         route("/privacy-policy", "routes/general/privacy-policy.tsx"),
         route("/health", "routes/general/health.tsx"),
-        route("/admin/login", "routes/admin/form/login.tsx"),
-        route("/admin/signup", "routes/admin/form/signup.tsx"),
-    ]),
 
+    ]),
+    route("/admin/login", "routes/admin/form/login.tsx"),
+    route("/admin/signup", "routes/admin/form/signup.tsx"),
     layout("./Layout/admin-layout.tsx", [
         ...prefix("admin", [
             route("home-dashboard", "routes/admin/dashboard.tsx"),
+            route("customer", "routes/admin/users/all-user.tsx"),
+            route("kyc", "routes/admin/kyc/all-kyc.tsx"),
+            route("plan", "routes/admin/plans/all-plans.tsx"),
+            route("deposits", "routes/admin/deposit/all-deposit.tsx"),
+            route("withdraw", "routes/admin/withdraw/all-withdraw.tsx"),
+            route("transactions", "routes/admin/transaction/all-transact.tsx"),
 
         ])
     ]),

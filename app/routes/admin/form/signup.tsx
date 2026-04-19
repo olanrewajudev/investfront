@@ -1,7 +1,8 @@
 import { useForm } from '@mantine/form';
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Apis, AuthPosturl } from '~/components/general/api';
+import { useNavigate } from 'react-router';
+import { Apis, AuthPosturl, Posturl } from '~/components/general/api';
 import Formbutton from '~/components/general/form-button';
 import Forminput from '~/components/general/form-input';
 import Linked from '~/components/general/linked';
@@ -12,8 +13,10 @@ export default function Signup() {
     const [pass2, setPass2] = useState(false);
     const Icon1 = pass1 ? FaEye : FaEyeSlash;
     const Icon2 = pass2 ? FaEye : FaEyeSlash;
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate()
     const form = useForm({
-        mode: "uncontrolled", initialValues: { email: '', firstName: '', lastName: '', username: '', password: '', confirmPassword: '', phone: '' },
+        mode: "uncontrolled", initialValues: { email: '', firstName: '', lastName: '', username: '', password: '', confirmPassword: '', phone: '', userType: 'admin', tag: 'create', id: '' },
         validate: {
             firstName: (v) => !v ? 'First name is required' : null,
             lastName: (v) => !v ? 'Last name is required' : null,
@@ -27,19 +30,27 @@ export default function Signup() {
     })
     async function HandleSubmission(values: typeof form.values) {
         try {
-            const res = await AuthPosturl(Apis.users.signup, values)
-            HotAlert(res.data.msg)
+            setLoading(true);
+            const res = await Posturl(Apis.admins.adminsignup, values);
 
+            if (res.data.status === 400) {
+                ErrorAlert(res.data.msg);
+            } else if (res.status === 200) {
+                navigate('/admin/login')
+                HotAlert(res.data.msg);
+            }
         } catch (error) {
-            ErrorAlert((error as Error).message)
+            ErrorAlert((error as Error).message);
+        } finally {
+            setLoading(false);
         }
     }
     return (
         <div>
             <div>
-                <div className=''>
+                <div className='bg-gray lg:w-[50rem] mx-5 lg:mx-auto my-10 p-5'>
                     <div className=" px-3">
-                        <div className="flex items-center justify-center gap-10"><div className="text-yellow-dark text-center font-extrabold text-4xl md:text-5xl font-base w-3/4">Sign Up</div></div>
+                        <div className="flex items-center justify-center gap-10"><div className="text-yellow-dark text-center font-extrabold text-4xl md:text-5xl font-base w-3/4">Sign Up As Admin</div></div>
 
                         <form onSubmit={form.onSubmit(HandleSubmission)}>
                             <Forminput content="First Name" error={form.errors.firstName?.toString() || ''}{...form.getInputProps("firstName")} placeholder='First Name' />
@@ -60,8 +71,8 @@ export default function Signup() {
                             </div>
 
                             <div className="space-y-3">
-                              
-                                <Formbutton title="Continue" className='bg-yellow-dark text-white' loading={form.submitting} />
+
+                                <Formbutton title="Continue" className='bg-yellow-dark text-white' loading={loading} />
                                 <Linked to='/admin/login' className="text-center flex items-center justify-center gap-1 mt-5">Already have an account?<div className="underline cursor-pointer" >Log In</div>
                                 </Linked>
                             </div>

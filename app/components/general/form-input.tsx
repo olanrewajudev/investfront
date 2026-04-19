@@ -24,9 +24,8 @@ const Forminput = forwardRef<HTMLInputElement | HTMLTextAreaElement | HTMLSelect
     }
 
     return (
-        <div className="mb-0">
+        <div className="mb-3">
             <div className={formtype === "select" ? "" : "mb-4"}>
-                {/* INPUT */}
                 {formtype === "input" && (
                     <TextInput
                         {...props}

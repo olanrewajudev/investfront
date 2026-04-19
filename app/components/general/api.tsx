@@ -18,7 +18,12 @@ const user_urls = {
   uploadkyc: `user/upload-kyc`,
 };
 const admin_urls = {
-
+  adminsignup: `user/create`,
+  adminlogin: `user/login-admin`,
+  getallplans: `plan/all-plans`,
+  addplans: `plan/create-plan`,
+  updateplans: `plan/update-plan`,
+  deleteplans: `plan/delete-plan`,
 
 };
 

@@ -37,6 +37,20 @@ export default function dashboard() {
       </div>
 
       <div className="px-4">
+        <div className="lg:hidden">
+          <div className="bg-linear-to-r from-yellow-dark to-primary-dark p-3 rounded-xl">
+            <div className=" flex items-end justify-end "><div className="bg-white font-bold text-sm px-2 py-1 rounded-full">WALLET</div></div>
+            <div className="text-[1.5rem] font-bold text-white">Account Balance</div>
+            <div className="flex text-white text-lg mt-3 items-center justify-between">
+              <div className="font-bold">Main Wallet</div>
+              <div className="tont-bold">$0</div>
+            </div>
+          </div>
+          <div className="flex items-center justify-between gap-3 mt-4">
+            <div className="bg-primary-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white">Deposit</div>
+            <div className="bg-yellow-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white">Invest Now</div>
+          </div>
+        </div>
         <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-4 mt-5 ">
           <div className="flex md:items-start items-center gap-3 bg-lightest py-3 px-4">
             <div className="bg-dark-gray text-lightest rounded-full p-1 text-2xl"><TbChartHistogram /></div>

@@ -46,7 +46,7 @@ export default function Kyc() {
         <div>
             <div className="m-5">
                 <div className="text-[2rem] font-bold mb-4">Upload KYC</div>
-                {profile.submitted === false ? (
+                {profile.submitted === 'false' ? (
                     <div className="border p-5 rounded-2xl">
                         <form action="" onSubmit={form.onSubmit(handleSubmissin)}>
                             <div className="mb-5">
