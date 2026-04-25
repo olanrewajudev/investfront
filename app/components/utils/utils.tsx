@@ -63,8 +63,7 @@ export const formatAmount = (amount?: number) => {
 };
 export const adminSidebar = [
     { title: 'Home', url: [`/admin/home-dashboard`], Icon: BiHome },
-    { title: 'Customers', url: [`/admin/customer`], Icon: BiHome },
-    { title: 'Kyc Management', url: [`/admin/kyc`], Icon: BiHome },
+    { title: 'Customers & Kyc Management', url: [`/admin/customer`], Icon: BiHome },
     { title: 'Plans', url: [`/admin/plan`], Icon: BiHome },
     { title: 'Deposit', url: [`/admin/deposit`], Icon: BiHome },
     { title: 'Withdraw', url: [`/admin/withdraw`], Icon: BiHome },

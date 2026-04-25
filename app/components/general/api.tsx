@@ -6,6 +6,7 @@ export let BaseURL: string;
 BaseURL = `http://localhost:3100/api`
 
 export const CookieName: string = 'userToken';
+export const offlineServer = 'http://localhost:3100';
 
 const user_urls = {
   signup: `user/signup`,
@@ -18,6 +19,10 @@ const user_urls = {
   uploadkyc: `user/upload-kyc`,
 };
 const admin_urls = {
+  admingetalluser: `user/all`,
+  admingetsingleuser: `user/single`,
+  adminupdatekycstatus: `user/update-kyc`,
+  admindeletekyc: `user/delete-kyc`,
   adminsignup: `user/create`,
   adminlogin: `user/login-admin`,
   getallplans: `plan/all-plans`,

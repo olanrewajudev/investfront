@@ -22,6 +22,7 @@ export default [
         ...prefix("admin", [
             route("home-dashboard", "routes/admin/dashboard.tsx"),
             route("customer", "routes/admin/users/all-user.tsx"),
+            route("customer/single/:id", "routes/admin/users/single-user.tsx"),
             route("kyc", "routes/admin/kyc/all-kyc.tsx"),
             route("plan", "routes/admin/plans/all-plans.tsx"),
             route("deposits", "routes/admin/deposit/all-deposit.tsx"),

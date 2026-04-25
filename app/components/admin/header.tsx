@@ -8,7 +8,7 @@ import { CiGlobe } from 'react-icons/ci';
 import { Drawer, Modal } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { Apis, AuthPosturl, CookieName } from '~/components/general/api';
-import { ErrorAlert, HotAlert, UserSidebar, userSideBar } from '~/components/utils/utils';
+import { adminSidebar, ErrorAlert, HotAlert, UserSidebar, userSideBar } from '~/components/utils/utils';
 import Forminput from '~/components/general/form-input';
 import Formbutton from '~/components/general/form-button';
 import Linked from '~/components/general/linked';
@@ -101,7 +101,7 @@ export default function Header() {
                 </div>
                 <div>
                     <div className="flex flex-col mt-5">
-                        {UserSidebar.map((item, index) => {
+                        {adminSidebar.map((item, index) => {
                             const isActive = Array.isArray(item.url) ? item.url.some((path: string) => location.pathname.startsWith(path.replace('/:id', ''))) : location.pathname === item.url
                             return (
                                 <Linked key={index} to={Array.isArray(item.url) ? item.url[0] : item.url} className={`flex items-center gap-2 p-2 transition-all rounded-lg ${isActive ? 'bg-yellow-dark' : ''}`}><item.Icon className="text-lg" /><span>{item.title}</span></Linked>

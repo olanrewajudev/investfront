@@ -40,7 +40,7 @@ export default function AdminSidebar() {
             <div className="border-r border-[#AAAAAA] py-2 px-4 h-screen flex flex-col">
 
                 <div>
-                    <div className="flex flex-col mt-5">
+                    <div className="flex flex-col">
                         {adminSidebar.map((item, index) => {
                             const isActive = Array.isArray(item.url) ? item.url.some((path: string) => location.pathname.startsWith(path.replace('/:id', ''))) : location.pathname === item.url
                             return (

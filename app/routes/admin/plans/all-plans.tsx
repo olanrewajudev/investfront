@@ -39,7 +39,6 @@ export default function AllPlans() {
             return res.msg
         },
     })
-    console.log(plan)
     const editForm = useForm<PlanFormType>({
         initialValues: { title: '', minDept: 0, maxDept: 0, minWithd: 0, maxWithd: 0, returns: 0, duration: 0, durationType: '', refbonusType: '', returnCapital: '', refbonus: 0, id: '' },
         validate: {
