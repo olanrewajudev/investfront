@@ -10,6 +10,7 @@ import type { RootState } from '~/Lib/store'
 
 export default function Kyc() {
     const [loading, setLoading] = useState(false)
+    const [reupload, setReupload] = useState(false)
     const { profile } = useSelector((state: RootState) => state.data)
     const form = useForm({
         initialValues: {
@@ -18,6 +19,7 @@ export default function Kyc() {
             front: null as File | null,
             back: null as File | null,
         },
+
         validate: {
             type: (value) => (!value ? 'Select document type' : null),
             front: (value) => (!value ? 'Front image is required' : null),
@@ -38,6 +40,7 @@ export default function Kyc() {
             const res = await AuthPosturl(Apis.users.uploadkyc, formData, 'FILE')
             setLoading(false)
             HotAlert(res.data.msg)
+            window.location.reload()
         } catch (error) {
             ErrorAlert((error as Error).message)
         }
@@ -46,130 +49,41 @@ export default function Kyc() {
         <div>
             <div className="m-5">
                 <div className="text-[2rem] font-bold mb-4">Upload KYC</div>
-                {/* {profile.submitted === 'false' ? (
-                    <div className="border p-5 rounded-2xl">
-                        <form action="" onSubmit={form.onSubmit(handleSubmissin)}>
-                            <div className="mb-5">
-                                <Select
-                                    label="Document Type"
-                                    placeholder="Select your ID type"
-                                    data={[
-                                        { value: 'Driver’s License', label: 'Driver’s License' },
-                                        { value: 'State ID Card', label: 'State ID Card' },
-                                        { value: 'Passport', label: 'Passport' },
-                                        { value: 'Green Card', label: 'Green Card' },
-                                    ]}
-                                    {...form.getInputProps('type')}
-                                    searchable
-                                    clearable
-                                />
-                            </div>
-                            <div className="mb-4"> <ImageUpload title="Front Image" description="" value={form.values.front ? [form.values.front] : []} onChange={(files: File[]) => form.setFieldValue('front', files[0])} /></div>
-                            <div className="mb-6"> <ImageUpload title="Back Image" description="" value={form.values.back ? [form.values.back] : []} onChange={(files: File[]) => form.setFieldValue('back', files[0])} /></div>
-
-                            <Checkbox mt="md" label="I confirm the document is valid" {...form.getInputProps('agree', { type: 'checkbox' })} className='mb-5' />
-                            <Formbutton title='Submit KYC' loading={loading} />
-                        </form>
-                    </div>
-                ) : (
-                    <div className="border rounded-2xl p-5">
-                        <div className="text-[1.5rem] font-semibold">KYC Submitted Successfully</div>
-                        <div className="mt-2">Your verification documents have been received and are currently under review. Our team is carefully checking the information you provided. This process may take a little time, but we’ll notify you as soon as your KYC is approved.</div>
-                        <div className="mt-4">In the meantime, you can continue exploring the platform, but some features may remain limited until verification is complete. Thank you for your patience.</div>
-                    </div>
-                )} */}
-
-                {profile.submitted === 'false' ? (
-                    // ❌ NOT SUBMITTED → SHOW FORM
+                {profile.submitted === 'false' || reupload ? (
                     <div className="border p-5 rounded-2xl">
                         <form onSubmit={form.onSubmit(handleSubmissin)}>
-                            <div className="mb-5">
-                                <Select
-                                    label="Document Type"
-                                    placeholder="Select your ID type"
-                                    data={[
-                                        { value: 'Driver’s License', label: 'Driver’s License' },
-                                        { value: 'State ID Card', label: 'State ID Card' },
-                                        { value: 'Passport', label: 'Passport' },
-                                        { value: 'Green Card', label: 'Green Card' },
-                                    ]}
-                                    {...form.getInputProps('type')}
-                                    searchable
-                                    clearable
-                                />
-                            </div>
-
-                            <div className="mb-4">
-                                <ImageUpload
-                                    title="Front Image"
-                                    description=""
-                                    value={form.values.front ? [form.values.front] : []}
-                                    onChange={(files: File[]) => form.setFieldValue('front', files[0])}
-                                />
-                            </div>
-
-                            <div className="mb-6">
-                                <ImageUpload
-                                    title="Back Image"
-                                    description=""
-                                    value={form.values.back ? [form.values.back] : []}
-                                    onChange={(files: File[]) => form.setFieldValue('back', files[0])}
-                                />
-                            </div>
-
-                            <Checkbox
-                                mt="md"
-                                label="I confirm the document is valid"
-                                {...form.getInputProps('agree', { type: 'checkbox' })}
-                                className="mb-5"
-                            />
-
+                            <div className="mb-5"><Select label="Document Type" placeholder="Select your ID type" data={[{ value: 'Driver’s License', label: 'Driver’s License' }, { value: 'State ID Card', label: 'State ID Card' }, { value: 'Passport', label: 'Passport' }, { value: 'Green Card', label: 'Green Card' },]} {...form.getInputProps('type')} searchable clearable /></div>
+                            <div className="mb-4"><ImageUpload title="Front Image" description="" value={form.values.front ? [form.values.front] : []} onChange={(files: File[]) => form.setFieldValue('front', files[0])} /></div>
+                            <div className="mb-6"><ImageUpload title="Back Image" description="" value={form.values.back ? [form.values.back] : []} onChange={(files: File[]) => form.setFieldValue('back', files[0])} /></div>
+                            <Checkbox mt="md" label="I confirm the document is valid" {...form.getInputProps('agree', { type: 'checkbox' })} className="mb-5" />
                             <Formbutton title="Submit KYC" loading={loading} />
                         </form>
                     </div>
-
                 ) : profile.verified === 'verified' ? (
-                    // ✅ VERIFIED → SHOW SUCCESS UI
                     <div className="bg-lime-light border border-discount p-5 rounded-xl">
-                        <div className="text-primary-dark text-xl font-bold mb-2">
-                            ✅ KYC Verified
-                        </div>
-
-                        <div className="text-lg font-semibold">
-                            Document Type: {profile?.type}
-                        </div>
-
-                        <p className="text-primary-dark mt-2">
-                            Your identity has been successfully verified. You now have full access to all platform features.
-                        </p>
+                        <div className="text-primary-dark text-xl font-bold mb-2">✅ KYC Verified</div>
+                        <div className="text-lg font-semibold">Document Type: {profile?.type}</div>
+                        <p className="text-primary-dark mt-2">Your identity has been successfully verified. You now have full access to all platform features.</p>
                     </div>
-
                 ) : profile.verified === 'declined' ? (
-                    // ❌ DECLINED → SHOW ERROR STATE
                     <div className="bg-red-50 border border-red-200 p-5 rounded-xl">
-                        <div className="text-red-600 text-xl font-bold mb-2">
-                            ❌ KYC Declined
-                        </div>
-
-                        <p className="text-red-500">
+                        <div className="text-red-600 text-xl font-bold mb-2">❌ KYC Declined</div>
+                        <p className="text-red-500 mb-4">
                             Your verification was not approved. Please review your documents and try again.
                         </p>
+
+                        <button
+                            onClick={() => setReupload(true)}
+                            className="bg-primary text-white px-4 py-2 rounded-lg"
+                        >
+                            Reupload Documents
+                        </button>
                     </div>
-
                 ) : (
-                    // ⏳ PENDING → CURRENT UI
                     <div className="border rounded-2xl p-5">
-                        <div className="text-[1.5rem] font-semibold">
-                            KYC Submitted Successfully
-                        </div>
-
-                        <div className="mt-2">
-                            Your verification documents have been received and are currently under review.
-                        </div>
-
-                        <div className="mt-4">
-                            This process may take some time. We’ll notify you once it’s approved.
-                        </div>
+                        <div className="text-[1.5rem] font-semibold">KYC Submitted Successfully ✅</div>
+                        <div className="mt-2">Your verification documents have been received and are currently under review.</div>
+                        <div className="mt-3">This process may take some time. We’ll notify you once it’s approved.</div>
                     </div>
                 )}
             </div>

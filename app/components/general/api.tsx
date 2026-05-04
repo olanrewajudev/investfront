@@ -17,6 +17,29 @@ const user_urls = {
   updatepassword: `user/update-password`,
   logout: `user/logout`,
   uploadkyc: `user/upload-kyc`,
+
+};
+const plans_urls = {
+  getallplans: `plan/all-plans`,
+  addplans: `plan/create-plan`,
+  updateplans: `plan/update-plan`,
+  deleteplans: `plan/delete-plan`,
+};
+const wallet_urls = {
+  createwallet: `wallet/create-admin-wallet`,
+  updatewallet: `wallet/update-admin-wallet`,
+  getallwallets: `wallet/all-admin-wallets`,
+  getsinglewallet: `wallet/admin-wallet/:walletid`,
+  deletewallet: `wallet/admin-wallet`,
+  newuserbalance: `wallet/new-user-wallet`,
+};
+const transaction_urls = {
+  deposit: `transaction/save-deposit`,
+  singledeposit: `transaction/deposit`,
+  alldeposit: `transaction/all-deposits`,
+  alltransactions: `transaction/all-transactions`,
+  bankwithdrawal: `transaction/bank-withdrawal`,
+  cryptowithdrawal: `transaction/crypto-withdrawal`,
 };
 const admin_urls = {
   admingetalluser: `user/all`,
@@ -25,16 +48,16 @@ const admin_urls = {
   admindeletekyc: `user/delete-kyc`,
   adminsignup: `user/create`,
   adminlogin: `user/login-admin`,
-  getallplans: `plan/all-plans`,
-  addplans: `plan/create-plan`,
-  updateplans: `plan/update-plan`,
-  deleteplans: `plan/delete-plan`,
+
 
 };
 
 export const Apis = {
   users: user_urls,
   admins: admin_urls,
+  plans: plans_urls,
+  transaction: transaction_urls,
+  wallet: wallet_urls,
 };
 
 export const generateIdempotencyKey = () => {

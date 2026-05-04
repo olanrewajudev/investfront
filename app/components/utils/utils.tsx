@@ -66,6 +66,7 @@ export const adminSidebar = [
     { title: 'Customers & Kyc Management', url: [`/admin/customer`], Icon: BiHome },
     { title: 'Plans', url: [`/admin/plan`], Icon: BiHome },
     { title: 'Deposit', url: [`/admin/deposit`], Icon: BiHome },
+    { title: 'Wallet', url: [`/admin/wallet`], Icon: BiHome },
     { title: 'Withdraw', url: [`/admin/withdraw`], Icon: BiHome },
     { title: 'Transaction', url: [`/admin/transactions`], Icon: BiHome },
 ]

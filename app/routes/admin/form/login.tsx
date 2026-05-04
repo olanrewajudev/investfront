@@ -14,7 +14,6 @@ import { dispatchToken } from "~/Lib/reducer";
 export default function Login() {
     const [pass1, setPass1] = useState(false);
     const Icon1 = pass1 ? FaEye : FaEyeSlash;
-    const [verifyEmail, setVerifyEmail] = useState("")
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const form = useForm({
@@ -28,7 +27,7 @@ export default function Login() {
       async function HandleSubmission(values: typeof form.values) {
     
         try {
-          const res = await Posturl(Apis.users.login, values)
+          const res = await Posturl(Apis.admins.adminlogin, values)
           console.log(res.status)
          if (res.status === 200) {
             const token = res.data.token;

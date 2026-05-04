@@ -35,7 +35,7 @@ export default function AllPlans() {
     const { data: plan = [], } = useQuery({
         queryKey: ['plans'],
         queryFn: async () => {
-            const res = await AuthGeturl(`${Apis.admins.getallplans}`)
+            const res = await AuthGeturl(`${Apis.plans.getallplans}`)
             return res.msg
         },
     })
@@ -73,7 +73,7 @@ export default function AllPlans() {
     })
     async function handleCreatePlan(value: typeof form.values) {
         try {
-            const res = await AuthPosturl(Apis.admins.addplans, value)
+            const res = await AuthPosturl(Apis.plans.addplans, value)
             if (res.data.status === 400) {
                 ErrorAlert(res.data.msg)
             } else if (res.status === 200) {
@@ -88,7 +88,7 @@ export default function AllPlans() {
 
     async function handleUpdatePlan(values: typeof editForm.values) {
         try {
-            const res = await Put(`${Apis.admins.updateplans}/${values.id}`, values)
+            const res = await Put(`${Apis.plans.updateplans}/${values.id}`, values)
             if (res.status === 200) {
                 HotAlert(res.msg)
                 queryClient.invalidateQueries({ queryKey: ['plans'] })
@@ -100,7 +100,7 @@ export default function AllPlans() {
         }
     }
     const DeletePlans = async (id: string) => {
-        const res = await Delete(`${Apis.admins.deleteplans}/${id}`, {})
+        const res = await Delete(`${Apis.plans.deleteplans}/${id}`, {})
         if (res.status === 200) {
             HotAlert(res.data.msg)
             queryClient.invalidateQueries({ queryKey: ['plans'] })

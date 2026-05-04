@@ -25,7 +25,9 @@ export default [
             route("customer/single/:id", "routes/admin/users/single-user.tsx"),
             route("kyc", "routes/admin/kyc/all-kyc.tsx"),
             route("plan", "routes/admin/plans/all-plans.tsx"),
-            route("deposits", "routes/admin/deposit/all-deposit.tsx"),
+            route("wallet", "routes/admin/wallet/all-wallets.tsx"),
+            route("deposit", "routes/admin/deposit/all-deposit.tsx"),
+            route("deposit/single-deposit/:depositid", "routes/admin/deposit/single-deposit.tsx"),
             route("withdraw", "routes/admin/withdraw/all-withdraw.tsx"),
             route("transactions", "routes/admin/transaction/all-transact.tsx"),
 
