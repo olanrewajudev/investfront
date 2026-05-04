@@ -1,25 +1,29 @@
 
 import { MdLogout } from 'react-icons/md'
-import { HotAlert, UserSidebar, userSideBar } from '~/components/utils/utils'
+import { formatAmount, HotAlert, UserSidebar, userSideBar } from '~/components/utils/utils'
 import Linked from '~/components/general/linked'
 import { Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { CookieName } from '~/components/general/api'
 import Cookies from 'js-cookie'
 import { useNavigate } from 'react-router'
+import { useSelector } from 'react-redux'
+import type { RootState } from '~/Lib/store'
+import type React from 'react'
 export default function Sidebar() {
     const navigate = useNavigate()
     const [opened, { open, close }] = useDisclosure(false)
 
-  const Logout = async () => {
-    Cookies.remove(CookieName)
-    HotAlert('User logged out successfully')
+    const Logout = async () => {
+        Cookies.remove(CookieName)
+        HotAlert('User logged out successfully')
 
-    setTimeout(() => {
-        navigate('/')
-        window.location.reload()
-    }, 100)
-}
+        setTimeout(() => {
+            navigate('/')
+            window.location.reload()
+        }, 100)
+    }
+    const { profile } = useSelector((state: RootState) => state.data)
     return (
         <div className="w-[20rem] fixed bg-white z-40">
             <Modal size={'32rem'} centered withCloseButton={false} opened={opened} onClose={close}>
@@ -40,15 +44,20 @@ export default function Sidebar() {
             <div className="border-r border-[#AAAAAA] py-2 px-4 h-screen flex flex-col">
                 <div className="">
                     <div className="bg-linear-to-r from-yellow-dark to-primary-dark p-3 rounded-xl">
-                        <div className=" flex items-end justify-end "><div className="bg-white font-bold text-sm px-2 py-1 rounded-full">WALLET</div></div>
-                        <div className="text-[1.5rem] font-bold text-white">Account Balance</div>
-                        <div className="flex text-white text-lg mt-3 items-center justify-between">
-                            <div className="font-bold">Main Wallet</div>
-                            <div className="tont-bold">$0</div>
+                        <div className=" flex items-end justify-end "><div className="bg-white font-bold text-sm px-2 py-1 rounded-full">WALLET BALANCE</div></div>
+                        <div className="">
+                            <div className="font-bold ">
+                                {profile.wallets.map((item: {admins: {title: string}, currbal: number}, i:React.Key) => (
+                                    <div className="flex text-white text-lg mt-3 items-center justify-between" key={i}>
+                                        <div className="">{item.admins.title}</div>
+                                        <div className="">${formatAmount(item.currbal)}</div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <div className="flex items-center justify-between gap-3 mt-4">
-                        <div className="bg-primary-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white">Deposit</div>
+                        <div className="bg-primary-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white"> <Linked to='/user/deposit'>Deposit</Linked> </div>
                         <div className="bg-yellow-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white">Invest Now</div>
                     </div>
                 </div>

@@ -37,6 +37,8 @@ const transaction_urls = {
   deposit: `transaction/save-deposit`,
   singledeposit: `transaction/deposit`,
   alldeposit: `transaction/all-deposits`,
+  verifydeposit: `transaction/verify-deposit`,
+  declinedeposit: `transaction/decline-deposit`,
   alltransactions: `transaction/all-transactions`,
   bankwithdrawal: `transaction/bank-withdrawal`,
   cryptowithdrawal: `transaction/crypto-withdrawal`,

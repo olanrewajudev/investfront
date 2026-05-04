@@ -42,7 +42,7 @@ export default function Singleuser() {
         try {
             const payload = {
                 userid: id,
-                tag: 'verified', // ✅ use this instead of 'approved'
+                tag: 'verified',
             }
 
             const res = await Put(Apis.admins.adminupdatekycstatus, payload)
@@ -146,7 +146,7 @@ export default function Singleuser() {
                     <div className="text-[1.5rem] font-bold text-white">Account Balance</div>
                     <div className="flex text-white text-lg mt-3 items-center justify-between">
                         <div className="font-bold">Main Wallet</div>
-                        <div className="tont-bold">${user?.wallets}</div>
+                        <div className="tont-bold">${user?.wallets?.currbal ?? 0}</div>
                     </div>
                 </div>
                 <div className="flex items-center justify-between gap-3 mt-4">
@@ -168,12 +168,12 @@ export default function Singleuser() {
                     <div className="flex items-center w-full gap-10">
                         <div className="text-[1.2rem] font-semibold">
                             <div>Front Image</div>
-                            <Image className='h-[20rem] w-full object-cover' src={`${offlineServer}/documents/${user?.frontphoto}`}/>
+                            <Image className='h-[20rem] w-full object-cover' src={`${offlineServer}/documents/${user?.frontphoto}`} />
                         </div>
 
                         <div className="text-[1.2rem] font-semibold">
                             <div>Back Image</div>
-                            <Image className='h-[20rem] w-full object-cover' src={`${offlineServer}/documents/${user?.backphoto}`}/>
+                            <Image className='h-[20rem] w-full object-cover' src={`${offlineServer}/documents/${user?.backphoto}`} />
                         </div>
                     </div>
                 </div>

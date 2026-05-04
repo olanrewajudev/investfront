@@ -55,7 +55,7 @@ export default function Signup() {
                         <form onSubmit={form.onSubmit(HandleSubmission)}>
                             <Forminput content="First Name" error={form.errors.firstName?.toString() || ''}{...form.getInputProps("firstName")} placeholder='First Name' />
                             <Forminput content="Last Name" error={form.errors.lastName?.toString() || ''}{...form.getInputProps("lastName")} placeholder='Last Name' />
-                            <Forminput content="Username" error={form.errors.username?.toString() || ''}{...form.getInputProps("username")} placeholder='Username' />
+                            <Forminput content="Username" type='text' error={form.errors.username?.toString() || ''}{...form.getInputProps("username")} placeholder='Username' />
                             <Forminput content="Email" type="email" error={form.errors.email?.toString() || ''}{...form.getInputProps("email")} placeholder='Email' />
                             <Forminput content="number" type="number" error={form.errors.phone?.toString() || ''}{...form.getInputProps("phone")} placeholder='+123456789' />
                             <div className="flex w-full gap-2">

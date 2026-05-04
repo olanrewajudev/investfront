@@ -126,7 +126,7 @@ export default function Deposit() {
                           <Tr key={index} last={index === transaction.length - 1}>
                             <Td>{item.title}</Td>
                             <Td>${item.amount}</Td>
-                            <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow-100 text-yellow-700' : item.status === 'approved' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}> {item.status}</span></Td>
+                            <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}> {item.status}</span></Td>
                             <Td className="truncate max-w-[120px]">{item.txid}</Td>
                             <Td>{formatDate(item.date)}</Td>
                           </Tr>
