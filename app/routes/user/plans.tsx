@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { Apis, AuthGeturl } from '~/components/general/api'
+import Linked from '~/components/general/linked'
 
 export default function Plans() {
   const { data: plan = [] } = useQuery({
@@ -11,6 +12,53 @@ export default function Plans() {
     }
   })
 
+  // return (
+  //   <div className='mx-5 mt-4'>
+  //     <div className="text-[2.5rem] font-bold mb-6">All Plans</div>
+  //     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  //       {plan.length > 0 ? (
+  //         plan.map((item: any) => (
+  //           <div key={item.id} className="border border-gray-200 rounded-2xl p-5 bg-white shadow-sm hover:shadow-md transition-all duration-200">
+  //             <div className="flex justify-between items-start mb-3">
+  //               <div className="text-lg font-semibold">{item.title}</div>
+  //               <div className="text-xs text-gray-500">{item.duration} {item.durationType}</div>
+  //             </div>
+  //             <div className="mb-4">
+  //               <div className="text-2xl font-bold">${item.returnCapital.toLocaleString()}</div>
+  //               <div className="text-xs text-gray-500">Total Returns</div>
+  //             </div>
+  //             <div className="space-y-2 text-sm text-gray-700">
+  //               <div className="flex justify-between">
+  //                 <span>Deposit</span>
+  //                 <span>${item.minDept.toLocaleString()} - ₦{item.maxDept.toLocaleString()}</span>
+  //               </div>
+
+  //               <div className="flex justify-between">
+  //                 <span>Withdraw</span>
+  //                 <span>${item.minWithd.toLocaleString()} - ₦{item.maxWithd.toLocaleString()}</span>
+  //               </div>
+
+  //               <div className="flex justify-between">
+  //                 <span>Capital</span>
+  //                 <span className={item.returnCapital === "true" ? "text-green-600" : "text-red-500"}>{item.returnCapital === "true" ? "Returned" : "Not returned"}</span>
+  //               </div>
+
+  //               <div className="flex justify-between">
+  //                 <span>Referral</span>
+  //                 <span>{item.refbonus} {item.refbonusType === "Percentage" ? "%" : ""}</span>
+  //               </div>
+  //             </div>
+  //             <div className="mt-5 w-full border border-primary-dark text-primary-dark py-2 rounded-xl hover:bg-primary-dark hover:text-white transition text-center">
+  //               <Linked to={`/user/plans/invest-in-plan/${item.id}`}>Choose Plan</Linked>
+  //             </div>
+  //           </div>
+  //         ))
+  //       ) : (
+  //         <div>No plans available</div>
+  //       )}
+  //     </div>
+  //   </div>
+  // )
   return (
     <div className='mx-5 mt-4'>
       <div className="text-[2.5rem] font-bold mb-6">All Plans</div>
@@ -22,6 +70,7 @@ export default function Plans() {
               key={item.id}
               className="border border-gray-200 rounded-2xl p-5 bg-white shadow-sm hover:shadow-md transition-all duration-200"
             >
+
               {/* Header */}
               <div className="flex justify-between items-start mb-3">
                 <div className="text-lg font-semibold">{item.title}</div>
@@ -30,50 +79,55 @@ export default function Plans() {
                 </div>
               </div>
 
-              {/* Returns (highlight but not loud) */}
+              {/* Return % (MAIN FOCUS) */}
               <div className="mb-4">
-                <div className="text-2xl font-bold">
-                  ₦{item.returns.toLocaleString()}
+                <div className="text-3xl font-bold text-primary-dark">
+                  {item.returns}%
                 </div>
-                <div className="text-xs text-gray-500">Total Returns</div>
+                <div className="text-xs text-gray-500">Return Rate</div>
               </div>
 
               {/* Info */}
               <div className="space-y-2 text-sm text-gray-700">
+
                 <div className="flex justify-between">
                   <span>Deposit</span>
                   <span>
-                    ₦{item.minDept.toLocaleString()} - ₦{item.maxDept.toLocaleString()}
+                    ${item.minDept.toLocaleString()} - ${item.maxDept.toLocaleString()}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
                   <span>Withdraw</span>
                   <span>
-                    ₦{item.minWithd.toLocaleString()} - ₦{item.maxWithd.toLocaleString()}
+                    ${item.minWithd.toLocaleString()} - ${item.maxWithd.toLocaleString()}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
                   <span>Capital</span>
                   <span className={item.returnCapital === "true" ? "text-green-600" : "text-red-500"}>
-                    {item.returnCapital === "true" ? "Returned" : "Not returned"}
+                    {item.returnCapital === "true" ? "Returned" : "Not Returned"}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>Referral</span>
+                  <span>Referral Bonus</span>
                   <span>
                     {item.refbonus}
                     {item.refbonusType === "Percentage" ? "%" : ""}
                   </span>
                 </div>
+
               </div>
 
-              {/* Button */}
-              <button className="mt-5 w-full border border-primary-dark text-primary-dark py-2 rounded-xl hover:bg-primary-dark hover:text-white transition">
-                Choose Plan
-              </button>
+              {/* CTA */}
+              <div className="mt-5 w-full border border-primary-dark text-primary-dark py-2 rounded-xl hover:bg-primary-dark hover:text-white transition text-center">
+                <Linked to={`/user/plans/invest-in-plan/${item.id}`}>
+                  Choose Plan
+                </Linked>
+              </div>
+
             </div>
           ))
         ) : (

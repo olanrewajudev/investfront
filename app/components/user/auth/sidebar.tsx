@@ -58,7 +58,7 @@ export default function Sidebar() {
                     </div>
                     <div className="flex items-center justify-between gap-3 mt-4">
                         <div className="bg-primary-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white"> <Linked to='/user/deposit'>Deposit</Linked> </div>
-                        <div className="bg-yellow-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white">Invest Now</div>
+                        <div className="bg-yellow-dark w-full rounded-full py-2.5 font-semibold text-center cursor-pointer text-white"><Linked to='/user/investment'>Invest Now</Linked></div>
                     </div>
                 </div>
                 <div>

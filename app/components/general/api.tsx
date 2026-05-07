@@ -5,7 +5,7 @@ import Cookies from "js-cookie"
 export let BaseURL: string;
 BaseURL = `http://localhost:3100/api`
 
-export const CookieName: string = 'userToken';
+export const CookieName: string = 'investToken';
 export const offlineServer = 'http://localhost:3100';
 
 const user_urls = {
@@ -21,6 +21,9 @@ const user_urls = {
 };
 const plans_urls = {
   getallplans: `plan/all-plans`,
+  getsingleplans: `plan/plan`,
+  investplan: `plan/invest`,
+  getallinvestment: `plan/invest/all`,
   addplans: `plan/create-plan`,
   updateplans: `plan/update-plan`,
   deleteplans: `plan/delete-plan`,

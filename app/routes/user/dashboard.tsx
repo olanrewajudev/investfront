@@ -1,6 +1,8 @@
+import { useQuery } from "@tanstack/react-query"
 import { MdContentCopy } from "react-icons/md"
 import { TbChartHistogram } from "react-icons/tb"
 import { useSelector } from "react-redux"
+import { Apis, AuthGeturl } from "~/components/general/api"
 import Image from "~/components/general/image"
 import Table from "~/components/table/Table"
 import Tbody from "~/components/table/Tbody"
@@ -20,6 +22,14 @@ const Headers = [
 ]
 export default function dashboard() {
   const { profile } = useSelector((state: RootState) => state.data)
+    const { data: investment = [], } = useQuery({
+        queryKey: ['investments'],
+        queryFn: async () => {
+            const res = await AuthGeturl(`${Apis.plans.getallinvestment }`)
+            return res.msg
+        },
+    })
+    console.log(investment)
   return (
     <div>
       <div className="md:flex items-start justify-between border-b px-4 py-4 border-lightest">

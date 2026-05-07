@@ -33,7 +33,9 @@ export default function AllDeposit() {
         depositid: item.id
       }
       const res = await AuthPosturl(Apis.transaction.verifydeposit, payload)
-      HotAlert(res.data.message)
+     if(res.status === 200) {
+       HotAlert(res.data.msg)
+     }
       queryClient.invalidateQueries({ queryKey: ['deposits'] })
     } catch (error) {
       ErrorAlert((error as Error).message)
@@ -57,7 +59,7 @@ export default function AllDeposit() {
         setNote('')
         setSelectedDeposit(null)
         closeDecline()
-        HotAlert(res.data.message)
+        HotAlert(res.data.msg)
       }
 
       queryClient.invalidateQueries({ queryKey: ['deposits'] })

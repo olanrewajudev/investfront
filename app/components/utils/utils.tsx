@@ -73,6 +73,7 @@ export const adminSidebar = [
 export const UserSidebar = [
     { title: 'Home', url: [`/user/dashboard`], Icon: BiHome },
     { title: 'Kyc', url: [`/user/kyc`], Icon: BiHome },
+    { title: 'Wallets', url: [`/user/wallets`], Icon: BiHome },
     { title: 'Plans', url: [`/user/plans`], Icon: BiHome },
     { title: 'All Deposit', url: [`/user/deposit`], Icon: BiHome },
     { title: 'All Withdraw', url: [`/user/withdraw`], Icon: BiHome },
