@@ -29,7 +29,7 @@ export default [
             route("deposit", "routes/admin/deposit/all-deposit.tsx"),
             route("deposit/single-deposit/:depositid", "routes/admin/deposit/single-deposit.tsx"),
             route("withdraw", "routes/admin/withdraw/all-withdraw.tsx"),
-            route("transactions", "routes/admin/transaction/all-transact.tsx"),
+            // route("transactions", "routes/admin/transaction/all-transact.tsx"),
 
         ])
     ]),
@@ -43,8 +43,8 @@ export default [
             route("plans/invest-in-plan/:id", "routes/user/invest-plan.tsx"),
             route("deposit", "routes/user/deposit.tsx"),
             route("withdraw", "routes/user/withdraw.tsx"),
-            route("transactions", "routes/user/transaction.tsx"),
             route("settings", "routes/user/settings.tsx"),
+            route("transaction", "routes/user/transaction.tsx"),
 
         ])
     ]),

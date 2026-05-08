@@ -72,7 +72,7 @@ export default function MyInvestments() {
                 <div className="flex justify-between items-center mb-3">
                   <div className="font-semibold text-lg">{item.plans?.title}</div>
                   <div className={`text-xs px-3 py-1 rounded-full font-medium
-                    ${item.status === 'active' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}>
+                    ${item.status === 'active' ? 'bg-yellow-dark text-white' : 'bg-primary-dark text-white'}`}>
                     {item.status}
                   </div>
                 </div>
@@ -85,13 +85,13 @@ export default function MyInvestments() {
                   </div>
 
                   <div className="text-right">
-                    <div className="text-lg font-bold text-green-600">${item.returns.toLocaleString()}</div>
+                    <div className="text-lg font-bold text-lime">${item.returns.toLocaleString()}</div>
                     <div className="text-xs text-gray-500">Returns</div>
                   </div>
                 </div>
                 <div className="text-sm mb-3">Ends <span className="font-semibold">{item.timed}</span></div>
                 <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden mb-2">
-                  <div className={`h-2 ${   item.status === 'completed' ? 'bg-green-500' : 'bg-primary-dark' }`} style={{ width: `${progress}%` }}/>
+                  <div className={`h-2 ${   item.status === 'completed' ? 'bg-primary-dark' : 'bg-yellow-dark' }`} style={{ width: `${progress}%` }}/>
                 </div>
                 <div className="text-xs text-gray-500 text-right">{Math.floor(progress)}%</div>
               </div>

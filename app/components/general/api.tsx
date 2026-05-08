@@ -17,6 +17,7 @@ const user_urls = {
   updatepassword: `user/update-password`,
   logout: `user/logout`,
   uploadkyc: `user/upload-kyc`,
+  admindashboard: `user/admin-dashboard`,
 
 };
 const plans_urls = {
@@ -37,11 +38,15 @@ const wallet_urls = {
   newuserbalance: `wallet/new-user-wallet`,
 };
 const transaction_urls = {
+ 
   deposit: `transaction/save-deposit`,
   singledeposit: `transaction/deposit`,
   alldeposit: `transaction/all-deposits`,
+  allwithdrawal: `transaction/all-withdrawals`,
   verifydeposit: `transaction/verify-deposit`,
   declinedeposit: `transaction/decline-deposit`,
+  verifywithdraw: `transaction/confirm-withdrawal`,
+  declinewithdraw: `transaction/decline-withdrawal`,
   alltransactions: `transaction/all-transactions`,
   bankwithdrawal: `transaction/bank-withdrawal`,
   cryptowithdrawal: `transaction/crypto-withdrawal`,

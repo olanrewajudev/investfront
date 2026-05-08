@@ -11,7 +11,7 @@ import Linked from '~/components/general/linked'
 import { useForm } from '@mantine/form'
 import { Menu, Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-const Headers = ["Title", "Amount", "Status", "TxID", "Date", '', '']
+const Headers = ["Title", 'Name', "Amount", "Status", "TxID", "Date", '', '']
 export default function AllDeposit() {
   const queryClient = useQueryClient()
   const [note, setNote] = React.useState('')
@@ -88,7 +88,6 @@ export default function AllDeposit() {
         <div className="m-5">
           <div className="flex items-center justify-between mb-4">
             <div className="text-[1.9rem] font-semibold">All Deposit</div>
-            <div className="text-lg border rounded-full px-4 py-2 font-semibold hover:bg-yellow-dark cursor-pointer">Deposit</div>
           </div>
 
           <div className="border rounded-2xl border-lightest">
@@ -100,6 +99,7 @@ export default function AllDeposit() {
                     {deposit.map((item: any, index: number) => (
                       <Tr key={index} last={index === deposit.length - 1}>
                         <Td>{item.title}</Td>
+                        <Td>{item.tag?.firstName} {item.tag?.lastName}</Td>
                         <Td>${item.amount}</Td>
                         <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}> {item.status}</span></Td>
                         <Td className="truncate max-w-[120px]">{item.txid}</Td>

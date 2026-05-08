@@ -68,7 +68,6 @@ export const adminSidebar = [
     { title: 'Deposit', url: [`/admin/deposit`], Icon: BiHome },
     { title: 'Wallet', url: [`/admin/wallet`], Icon: BiHome },
     { title: 'Withdraw', url: [`/admin/withdraw`], Icon: BiHome },
-    { title: 'Transaction', url: [`/admin/transactions`], Icon: BiHome },
 ]
 export const UserSidebar = [
     { title: 'Home', url: [`/user/dashboard`], Icon: BiHome },
@@ -77,7 +76,7 @@ export const UserSidebar = [
     { title: 'Plans', url: [`/user/plans`], Icon: BiHome },
     { title: 'All Deposit', url: [`/user/deposit`], Icon: BiHome },
     { title: 'All Withdraw', url: [`/user/withdraw`], Icon: BiHome },
-    { title: 'All Transaction', url: [`/user/transactions`], Icon: BiHome },
+    { title: 'All Transaction', url: [`/user/transaction`], Icon: BiHome },
     { title: 'Settings', url: [`/user/settings`], Icon: BiHome },
 ]
 export const formatTimeAgo = (dateString: string) => {

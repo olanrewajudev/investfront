@@ -2,13 +2,14 @@
 import { useForm } from '@mantine/form'
 import { useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { Apis, AuthGeturl, AuthPosturl } from '~/components/general/api'
 import Forminput from '~/components/general/form-input'
 import Linked from '~/components/general/linked'
 import { ErrorAlert, HotAlert } from '~/components/utils/utils'
 
 export default function InvestInPlan() {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [loading, setLoading] = useState(false)
     const { data: wallet = [], } = useQuery({
@@ -18,7 +19,7 @@ export default function InvestInPlan() {
             return res.msg
         },
     })
-  
+
     const { data: plan, isLoading } = useQuery({
         queryKey: ['plans', id],
         queryFn: async () => {
@@ -26,36 +27,24 @@ export default function InvestInPlan() {
             return res.msg
         }
     })
-    const form = useForm({
-        initialValues: {
-            amount: '',
-            walletid: '',
-        },
-    })
+    const form = useForm({ initialValues: { amount: '', walletid: '', }, })
     const handleInvest = async () => {
         const { amount, walletid } = form.values
-
         if (!amount) return ErrorAlert('Enter amount')
         if (!walletid) return ErrorAlert('Select wallet')
-
         if (Number(amount) < plan.minDept || Number(amount) > plan.maxDept) {
             return HotAlert(`Amount must be between ${plan.minDept} and ${plan.maxDept}`)
         }
 
         try {
             setLoading(true)
-
-            const res = await AuthPosturl(Apis.plans.investplan, {
-                amount: Number(amount),
-                planid: plan.id,
-                walletid: Number(walletid),
-            })
-
-            if (res.status === 200) {
+            const res = await AuthPosturl(Apis.plans.investplan, { amount: Number(amount), planid: plan.id, walletid: Number(walletid), })
+            if (res.data.status === 400) {
+                ErrorAlert(res.data.msg)
+            } else if (res.status === 200) {
                 HotAlert(res.data.msg)
                 form.reset()
-            } else {
-                ErrorAlert(res.data.msg)
+                navigate('/user/investment')
             }
 
         } catch (err) {
@@ -98,11 +87,11 @@ export default function InvestInPlan() {
             </div>
             <div className="border border-gray-200 rounded-2xl p-5 bg-white shadow-sm">
                 <div className="text-lg font-semibold mb-3">Invest in this Plan</div>
-                <Forminput  error=''
+                <Forminput error=''
                     content={''} type="number"
                     placeholder={`Enter amount (${plan?.minDept} - ${plan?.maxDept})`}
-                    {...form.getInputProps('amount')}                />    
-                                {form.values.amount && (<div className="text-sm text-green-600 mb-3">Expected Profit: ${profit.toLocaleString()}</div>)}
+                    {...form.getInputProps('amount')} />
+                {form.values.amount && (<div className="text-sm text-green-600 mb-3">Expected Profit: ${profit.toLocaleString()}</div>)}
                 <Forminput error='' content='Select Wallet' formtype='select' options={[{ label: '-- Select Wallet --', value: '' }, ...wallet.map((w: any) => ({ label: w.title, value: String(w.id), }))]} {...form.getInputProps('walletid')} />
 
                 <button onClick={handleInvest} disabled={loading} className="w-full border border-primary-dark text-primary-dark py-2 rounded-xl hover:bg-primary-dark hover:text-white transition">{loading ? 'Processing...' : 'Invest Now'}</button>

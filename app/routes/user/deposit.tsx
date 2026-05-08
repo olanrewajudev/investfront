@@ -13,7 +13,7 @@ import { LiaTimesSolid } from 'react-icons/lia'
 import { useForm } from '@mantine/form'
 import Forminput from '~/components/general/form-input'
 import Formbutton from '~/components/general/form-button'
-import { ErrorAlert, formatDate, HotAlert } from '~/components/utils/utils'
+import { ErrorAlert, formatAmount, formatDate, HotAlert } from '~/components/utils/utils'
 import ImageUpload from '~/components/general/ImageUpload'
 import { useSelector } from 'react-redux'
 import type { RootState } from '~/Lib/store'
@@ -25,7 +25,7 @@ export default function Deposit() {
   const { data: transaction = [], } = useQuery({
     queryKey: ['transactions'],
     queryFn: async () => {
-      const res = await AuthGeturl(`${Apis.transaction.alltransactions}`)
+      const res = await AuthGeturl(`${Apis.transaction.alldeposit}`)
       return res.msg
     },
   })
@@ -125,7 +125,7 @@ export default function Deposit() {
                         {transaction.map((item: any, index: number) => (
                           <Tr key={index} last={index === transaction.length - 1}>
                             <Td>{item.title}</Td>
-                            <Td>${item.amount}</Td>
+                            <Td>${formatAmount(item.amount)}</Td>
                             <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}> {item.status}</span></Td>
                             <Td className="truncate max-w-[120px]">{item.txid}</Td>
                             <Td>{formatDate(item.date)}</Td>
