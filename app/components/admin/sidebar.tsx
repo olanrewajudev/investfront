@@ -13,7 +13,7 @@ export default function AdminSidebar() {
 
     const Logout = async () => {
         Cookies.remove(CookieName)
-        HotAlert('User logged out successfully')
+        HotAlert('Admin logged out successfully')
 
         setTimeout(() => {
             navigate('/')

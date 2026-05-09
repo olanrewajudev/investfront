@@ -22,6 +22,8 @@ import { countries } from 'countries-list'
 const Headers = ["Title", "Amount", "Status", "TxID", "Date"]
 
 export default function Withdraw() {
+  const { profile } = useSelector((state: RootState) => state.data)
+
   const queryClient = useQueryClient()
   const [opened, { open, close }] = useDisclosure()
   const [openedCrypto, { open: openCrypto, close: closeCrypto }] = useDisclosure()
@@ -29,7 +31,7 @@ export default function Withdraw() {
   const { data: transaction = [] } = useQuery({
     queryKey: ['transactions'],
     queryFn: async () => {
-      const res = await AuthGeturl(`${Apis.transaction.allwithdrawal}`)
+      const res = await AuthGeturl(`${Apis.transaction.alluserdeposit}/${profile?.id}`)
       return res.msg
     },
   })
@@ -94,7 +96,6 @@ export default function Withdraw() {
 
   const selectedWallet = wallet.find((w: any) => String(w.id) === form.values.walletid)
   const selectedCryptoWallet = wallet.find((w: any) => String(w.id) === Cryptoform.values.walletid)
-  const { profile } = useSelector((state: RootState) => state.data)
 
   return (
     <div>
@@ -128,6 +129,16 @@ export default function Withdraw() {
                   <div className="my-3 flex items-center justify-between border rounded-lg px-3 py-2 bg-gray-50"><div className="text-sm truncate">{selectedWallet.address}</div></div>
                 )}
                 <Forminput error='' content='Amount' {...form.getInputProps('amount')} placeholder='Enter amount' />
+                <div className="mt-4 rounded-2xl bg-[var(--color-primary-lighter)] border border-[var(--color-border-gray)] p-4">
+                  <div className="text-sm font-semibold text-[var(--color-primary-dark)] mb-2">Withdrawal Guide</div>
+                  <ul className="space-y-2 text-sm text-[var(--color-deep-gray)] leading-relaxed">
+                    <li>• Ensure your bank details are correct before submitting.</li>
+                    <li>• Withdrawals are processed within 24–48 business hours.</li>
+                    <li>• Incorrect banking details may delay your payment.</li>
+                    <li>• Your selected wallet balance must cover the withdrawal amount.</li>
+                    <li>• Additional verification may be required for large withdrawals.</li>
+                  </ul>
+                </div>
                 <div className="mt-6"><Formbutton title='Withdraw' loading={form.submitting} /></div>
               </form>
             </Drawer>
@@ -138,7 +149,16 @@ export default function Withdraw() {
                 <Forminput error='' content='Wallet Address' {...Cryptoform.getInputProps('address')} placeholder='Enter your wallet address' />
                 <Forminput error='' content='Amount' {...Cryptoform.getInputProps('amount')} placeholder='Enter amount' />
                 <Forminput error='' content='Select Wallet' formtype='select' options={[{ label: '-- Select Wallet --', value: '' }, ...wallet.map((w: any) => ({ label: w.title, value: String(w.id), }))]} {...Cryptoform.getInputProps('walletid')} />
-                {selectedCryptoWallet && (<div className="my-3 flex items-center justify-between border rounded-lg px-3 py-2 bg-gray-50"><div className="text-sm truncate">{selectedCryptoWallet.address}</div></div>)}
+                <div className="mt-4 rounded-2xl bg-[var(--color-primary-lighter)] border border-[var(--color-border-gray)] p-4">
+                  <div className="text-sm font-semibold text-[var(--color-primary-dark)] mb-2">Crypto Withdrawal Guide</div>
+                  <ul className="space-y-2 text-sm text-[var(--color-deep-gray)] leading-relaxed">
+                    <li>• Double-check your wallet address before submitting.</li>
+                    <li>• Sending to an incorrect network may result in permanent loss of funds.</li>
+                    <li>• Ensure your selected wallet has enough balance available.</li>
+                    <li>• Blockchain confirmations may affect processing times.</li>
+                    <li>• Withdrawals are irreversible once processed.</li>
+                  </ul>
+                </div>
                 <div className="mt-6"><Formbutton title='Withdraw' loading={Cryptoform.submitting} /></div>
               </form>
             </Drawer>
@@ -157,15 +177,20 @@ export default function Withdraw() {
                     <Table>
                       <Thead><Tr header last={false}>{Headers.map((h, i) => (<Td key={i} className="font-semibold">{h}</Td>))}</Tr></Thead>
                       <Tbody>
-                        {transaction.map((item: any, index: number) => (
-                          <Tr key={index} last={index === transaction.length - 1}>
-                            <Td>{item.title}</Td>
-                            <Td>${formatAmount(item.amount)}</Td>
-                            <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}>{item.status}</span></Td>
-                            <Td className="truncate max-w-[120px]">{item.txid}</Td>
-                            <Td>{formatDate(item.date)}</Td>
-                          </Tr>
-                        ))}
+                        {transaction.length > 0 ? (
+                          transaction.map((item: any, index: number) => (
+                            <Tr key={index} last={index === transaction.length - 1}>
+                              <Td>{item.title}</Td>
+                              <Td>${formatAmount(item.amount)}</Td>
+                              <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}>{item.status}</span></Td>
+                              <Td className="truncate max-w-[120px]">{item.txid}</Td>
+                              <Td>{formatDate(item.date)}</Td>
+                            </Tr>
+                          ))
+
+                        ) : (
+                          <Tr last><div className="m-5">There is no withdrawal at the moment</div></Tr>
+                        )}
                       </Tbody>
                     </Table>
                   </div>

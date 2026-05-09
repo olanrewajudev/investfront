@@ -2,23 +2,21 @@
 import { useForm } from '@mantine/form'
 import { useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router'
 import { Apis, AuthGeturl, AuthPosturl } from '~/components/general/api'
 import Forminput from '~/components/general/form-input'
 import Linked from '~/components/general/linked'
 import { ErrorAlert, HotAlert } from '~/components/utils/utils'
+import type { RootState } from '~/Lib/store'
 
 export default function InvestInPlan() {
     const navigate = useNavigate()
     const { id } = useParams()
     const [loading, setLoading] = useState(false)
-    const { data: wallet = [], } = useQuery({
-        queryKey: ['wallets'],
-        queryFn: async () => {
-            const res = await AuthGeturl(`${Apis.wallet.getallwallets}`)
-            return res.msg
-        },
-    })
+    const { profile } = useSelector((state: RootState) => state.data)
+
+    const wallet = profile?.wallets || []
 
     const { data: plan, isLoading } = useQuery({
         queryKey: ['plans', id],
@@ -40,6 +38,8 @@ export default function InvestInPlan() {
             setLoading(true)
             const res = await AuthPosturl(Apis.plans.investplan, { amount: Number(amount), planid: plan.id, walletid: Number(walletid), })
             if (res.data.status === 400) {
+                ErrorAlert(res.data.msg)
+            } else if (res.data.status === 404) {
                 ErrorAlert(res.data.msg)
             } else if (res.status === 200) {
                 HotAlert(res.data.msg)
@@ -92,7 +92,14 @@ export default function InvestInPlan() {
                     placeholder={`Enter amount (${plan?.minDept} - ${plan?.maxDept})`}
                     {...form.getInputProps('amount')} />
                 {form.values.amount && (<div className="text-sm text-green-600 mb-3">Expected Profit: ${profit.toLocaleString()}</div>)}
-                <Forminput error='' content='Select Wallet' formtype='select' options={[{ label: '-- Select Wallet --', value: '' }, ...wallet.map((w: any) => ({ label: w.title, value: String(w.id), }))]} {...form.getInputProps('walletid')} />
+                <Forminput error='' content='Select Wallet' formtype='select' options={[
+                    { label: '-- Select Wallet --', value: '' },
+
+                    ...wallet.map((w: any) => ({
+                        label: `${w.admins.title} - $${Number(w.currbal).toLocaleString()}`,
+                        value: String(w.id),
+                    }))
+                ]} {...form.getInputProps('walletid')} />
 
                 <button onClick={handleInvest} disabled={loading} className="w-full border border-primary-dark text-primary-dark py-2 rounded-xl hover:bg-primary-dark hover:text-white transition">{loading ? 'Processing...' : 'Invest Now'}</button>
             </div>

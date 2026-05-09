@@ -23,7 +23,7 @@ import service3 from '../../../public/general/service-thumb-c.jpg'
 import service4 from '../../../public/general/service-thumb-d.jpg'
 import service5 from '../../../public/general/service-thumb-e.jpg'
 import service6 from '../../../public/general/service-thumb-f.jpg'
-import { BiHome } from "react-icons/bi";
+import { BiCog, BiDownArrowAlt, BiHome, BiPackage, BiTransfer, BiUpArrowAlt, BiUser, BiWallet } from "react-icons/bi";
 
 export const HotAlert = (message: Renderable | ValueFunction<Renderable, Toast>) => {
     return toast.success(message, {
@@ -61,23 +61,28 @@ export const formatAmount = (amount?: number) => {
         maximumFractionDigits: 2,
     });
 };
+
+import { FaHandHoldingUsd, FaMoneyBillWave, FaUsersCog } from 'react-icons/fa'
+
 export const adminSidebar = [
-    { title: 'Home', url: [`/admin/home-dashboard`], Icon: BiHome },
-    { title: 'Customers & Kyc Management', url: [`/admin/customer`], Icon: BiHome },
-    { title: 'Plans', url: [`/admin/plan`], Icon: BiHome },
-    { title: 'Deposit', url: [`/admin/deposit`], Icon: BiHome },
-    { title: 'Wallet', url: [`/admin/wallet`], Icon: BiHome },
-    { title: 'Withdraw', url: [`/admin/withdraw`], Icon: BiHome },
+    { title: 'Home', url: ['/admin/home-dashboard'], Icon: BiHome },
+    { title: 'Customers & Kyc Management', url: ['/admin/customer'], Icon: FaUsersCog },
+    { title: 'Plans', url: ['/admin/plan'], Icon: BiPackage },
+    { title: 'Deposit', url: ['/admin/deposit'], Icon: FaMoneyBillWave },
+    { title: 'Wallet', url: ['/admin/wallet'], Icon: BiWallet },
+    { title: 'Withdraw', url: ['/admin/withdraw'], Icon: FaHandHoldingUsd },
 ]
+
 export const UserSidebar = [
-    { title: 'Home', url: [`/user/dashboard`], Icon: BiHome },
-    { title: 'Kyc', url: [`/user/kyc`], Icon: BiHome },
-    { title: 'Wallets', url: [`/user/wallets`], Icon: BiHome },
-    { title: 'Plans', url: [`/user/plans`], Icon: BiHome },
-    { title: 'All Deposit', url: [`/user/deposit`], Icon: BiHome },
-    { title: 'All Withdraw', url: [`/user/withdraw`], Icon: BiHome },
-    { title: 'All Transaction', url: [`/user/transaction`], Icon: BiHome },
-    { title: 'Settings', url: [`/user/settings`], Icon: BiHome },
+    { title: 'Home', url: ['/user/dashboard'], Icon: BiHome },
+    { title: 'Kyc', url: ['/user/kyc'], Icon: BiUser },
+    { title: 'Wallets', url: ['/user/wallets'], Icon: BiWallet },
+    { title: 'Plans', url: ['/user/plans'], Icon: BiPackage },
+    { title: 'All Deposit', url: ['/user/deposit'], Icon: FaMoneyBillWave },
+
+    { title: 'All Withdraw', url: ['/user/withdraw'], Icon: FaHandHoldingUsd },
+    { title: 'All Transaction', url: ['/user/transaction'], Icon: BiTransfer },
+    { title: 'Settings', url: ['/user/settings'], Icon: BiCog },
 ]
 export const formatTimeAgo = (dateString: string) => {
     const diff = Date.now() - new Date(dateString).getTime()

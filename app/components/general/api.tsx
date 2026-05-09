@@ -18,6 +18,7 @@ const user_urls = {
   logout: `user/logout`,
   uploadkyc: `user/upload-kyc`,
   admindashboard: `user/admin-dashboard`,
+  userdasboard: `user/user-dashboard`,
 
 };
 const plans_urls = {
@@ -41,6 +42,8 @@ const transaction_urls = {
  
   deposit: `transaction/save-deposit`,
   singledeposit: `transaction/deposit`,
+  alluserdeposit: `transaction/user-deposits`,
+  alluserwithdrawal: `transaction/user-withdrawals`,
   alldeposit: `transaction/all-deposits`,
   allwithdrawal: `transaction/all-withdrawals`,
   verifydeposit: `transaction/verify-deposit`,

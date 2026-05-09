@@ -30,15 +30,23 @@ export default function Transaction() {
                             <Table>
                                 <Thead><Tr header last={false}>{Headers.map((h, i) => (<Td key={i} className="font-semibold">{h}</Td>))}</Tr></Thead>
                                 <Tbody>
-                                    {transaction.map((item: any, index: number) => (
-                                        <Tr key={index} last={index === transaction.length - 1}>
-                                            <Td>{item.title}</Td>
-                            <Td>${formatAmount(item.amount)}</Td>
-                                            <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}> {item.status}</span></Td>
-                                            <Td className="truncate max-w-[120px]">{item.txid}</Td>
-                                            <Td>{formatDate(item.date)}</Td>
+                                    {transaction.length > 0 ? (
+
+                                        transaction.map((item: any, index: number) => (
+                                            <Tr key={index} last={index === transaction.length - 1}>
+                                                <Td>{item.title}</Td>
+                                                <Td>${formatAmount(item.amount)}</Td>
+                                                <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}>{item.status}</span></Td>
+                                                <Td className="truncate max-w-[120px]">{item.txid}</Td>
+                                                <Td>{formatDate(item.date)}</Td>
+                                            </Tr>
+                                        ))
+
+                                    ) : (
+                                        <Tr last>
+                                            <div className="m-5">There is no transaction at the moment</div>
                                         </Tr>
-                                    ))}
+                                    )}
                                 </Tbody>
                             </Table>
                         </div>

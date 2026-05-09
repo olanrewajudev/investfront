@@ -20,12 +20,14 @@ import type { RootState } from '~/Lib/store'
 import Linked from '~/components/general/linked'
 const Headers = ["Title", "Amount", "Status", "TxID", "Date"]
 export default function Deposit() {
+  const { profile } = useSelector((state: RootState) => state.data)
+
   const queryClient = useQueryClient()
   const [opened, { open, close }] = useDisclosure()
   const { data: transaction = [], } = useQuery({
     queryKey: ['transactions'],
     queryFn: async () => {
-      const res = await AuthGeturl(`${Apis.transaction.alldeposit}`)
+      const res = await AuthGeturl(`${Apis.transaction.alluserdeposit}/${profile?.id}`)
       return res.msg
     },
   })
@@ -72,7 +74,6 @@ export default function Deposit() {
   const selectedWallet = wallet.find(
     (w: any) => String(w.id) === form.values.adminwalletid
   )
-  const { profile } = useSelector((state: RootState) => state.data)
   return (
     <div>
       <div>
@@ -105,7 +106,16 @@ export default function Deposit() {
                   <ImageUpload title={''} description={''} onChange={(files) => form.setFieldValue('image', files[0] || null)} />
                 </div>
                 <Forminput error='' content='Transaction ID' {...form.getInputProps('txid')} placeholder='Enter transaction ID' />
-
+                <div className="mt-2 rounded-2xl bg-[var(--color-primary-lighter)] border border-[var(--color-border-gray)] p-4">
+                  <div className="text-sm font-semibold text-[var(--color-primary-dark)] mb-2">Deposit Guide</div>
+                  <ul className="space-y-2 text-sm text-[var(--color-deep-gray)] leading-relaxed">
+                    <li>• Send your deposit only to the selected wallet address above.</li>
+                    <li>• After payment, paste the blockchain transaction hash (TXID) here.</li>
+                    <li>• Upload a clear screenshot as proof of payment.</li>
+                    <li>• Deposits are usually confirmed within a few minutes depending on network congestion.</li>
+                    <li>• Incorrect wallet networks may result in permanent loss of funds.</li>
+                  </ul>
+                </div>
                 <div className="mt-6"> <Formbutton title='Deposit' loading={form.submitting} /></div>
               </form>
             </Drawer >
@@ -122,15 +132,23 @@ export default function Deposit() {
                     <Table>
                       <Thead><Tr header last={false}>{Headers.map((h, i) => (<Td key={i} className="font-semibold">{h}</Td>))}</Tr></Thead>
                       <Tbody>
-                        {transaction.map((item: any, index: number) => (
-                          <Tr key={index} last={index === transaction.length - 1}>
-                            <Td>{item.title}</Td>
-                            <Td>${formatAmount(item.amount)}</Td>
-                            <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}> {item.status}</span></Td>
-                            <Td className="truncate max-w-[120px]">{item.txid}</Td>
-                            <Td>{formatDate(item.date)}</Td>
+                        {transaction.length > 0 ? (
+
+                          transaction.map((item: any, index: number) => (
+                            <Tr key={index} last={index === transaction.length - 1}>
+                              <Td>{item.title}</Td>
+                              <Td>${formatAmount(item.amount)}</Td>
+                              <Td><span className={`px-2 py-1 rounded text-xs ${item.status === 'pending' ? 'bg-yellow' : item.status === 'successful' ? 'bg-primary-dark text-white' : 'bg-error text-white'}`}> {item.status}</span></Td>
+                              <Td className="truncate max-w-[120px]">{item.txid}</Td>
+                              <Td>{formatDate(item.date)}</Td>
+                            </Tr>
+                          ))
+
+                        ) : (
+                          <Tr last>
+                            <div className="m-5">There is no deposit at the moment</div>
                           </Tr>
-                        ))}
+                        )}
                       </Tbody>
                     </Table>
                   </div>

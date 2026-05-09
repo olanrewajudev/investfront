@@ -1,24 +1,65 @@
+import { useQuery } from '@tanstack/react-query'
 import React from 'react'
-import { FaUsers } from 'react-icons/fa'
+import { FaUsers, FaMoneyBillWave, FaWallet, FaBoxOpen, FaBitcoin, FaCommentDots } from 'react-icons/fa'
+import { Apis, AuthGeturl } from '~/components/general/api'
 import { useSelector } from 'react-redux'
 import type { RootState } from '~/Lib/store'
 
 export default function AdminDashboard() {
-    const {profile} = useSelector((state: RootState) => state.data)
+
+    const { data: admindashboard = [] } = useQuery({
+        queryKey: ['admin-dashboards'],
+        queryFn: async () => {
+            const res = await AuthGeturl(`${Apis.users.admindashboard}`)
+            return res.msg
+        },
+    })
+
+    const { profile } = useSelector((state: RootState) => state.data)
+    const getIcon = (title: string) => {
+        switch (title) {
+            case 'registered users':
+                return <FaUsers size={22} />
+
+            case 'total withdrawals':
+            case 'total deposits':
+                return <FaMoneyBillWave size={22} />
+
+            case 'total wallets':
+                return <FaWallet size={22} />
+
+            case 'total packages':
+                return <FaBoxOpen size={22} />
+
+            case 'mining investments':
+            case 'active mining':
+            case 'in-active mining':
+                return <FaBitcoin size={22} />
+
+            case 'feedbacks':
+                return <FaCommentDots size={22} />
+
+            default:
+                return <FaUsers size={22} />
+        }
+    }
+
     return (
-        <div>
-            <div className="pt-5 mx-5">
-                <div className="text-[2rem] font-semibold mb-3">Welcome back, {profile.firstName}</div>
-                <div className="grid grid-cols-3 gap-5">
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Registered Users</div>
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Total Deposit</div>
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Total Withdraw</div>
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Total Referral</div>
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Total Send</div>
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Total Investment</div>
-                    <div className="bg-gray flex border border-lightest items-center py-10 gap-2 px-3 cursor-pointer rounded-xl shadow-xl"><FaUsers size={22} />Total Ticket</div>
-                </div>
-                
+        <div className="pt-5 mx-5">
+            <div className="text-[2rem] font-semibold mb-5">Welcome back, {profile.firstName}</div>
+            <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
+                {admindashboard.map((item: any, index: number) => (
+                    <div key={index} className="bg-white border border-lightest rounded-xl shadow-xl p-5">
+                        <div className="flex items-center justify-between mb-4">
+                            <div className="w-12 h-12 rounded-full flex items-center justify-center text-white" style={{ background: item.color }}>{getIcon(item.title)}</div>
+                            <div className="text-right">
+                                <h2 className="text-[1.5rem] font-bold">{item.total}</h2>
+                                {item.totalAmounts && (<p className="text-[0.9rem] text-gray-500">{item.totalAmounts}</p>)}
+                            </div>
+                        </div>
+                        <div className="capitalize text-[0.95rem] font-medium text-gray-700">{item.title}</div>
+                    </div>
+                ))}
             </div>
         </div>
     )

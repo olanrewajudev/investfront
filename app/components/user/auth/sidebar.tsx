@@ -43,17 +43,17 @@ export default function Sidebar() {
             </Modal>
             <div className="border-r border-[#AAAAAA] py-2 px-4 h-screen flex flex-col">
                 <div className="">
+                
                     <div className="bg-linear-to-r from-yellow-dark to-primary-dark p-3 rounded-xl">
-                        <div className=" flex items-end justify-end "><div className="bg-white font-bold text-sm px-2 py-1 rounded-full">WALLET BALANCE</div></div>
-                        <div className="">
-                            <div className="font-bold ">
-                                {profile.wallets.map((item: {admins: {title: string}, currbal: number}, i:React.Key) => (
-                                    <div className="flex text-white text-lg mt-3 items-center justify-between" key={i}>
-                                        <div className="">{item.admins.title}</div>
-                                        <div className="">${formatAmount(item.currbal)}</div>
-                                    </div>
-                                ))}
-                            </div>
+                        <div className=" flex items-end justify-end "><div className="bg-white font-bold text-sm px-2 py-1 rounded-full">WALLET</div></div>
+                        <div className="text-[1.5rem] font-bold text-white">Account Balance</div>
+                        <div className="flex text-white text-lg mt-3 items-center justify-between">
+                            <div className="font-bold">Main Wallet</div>
+                            <div className="tont-bold">${formatAmount(profile.deposits)}</div>
+                        </div>
+                        <div className="flex text-white text-lg mt-3 items-center justify-between">
+                            <div className="font-bold">Profit Wallet</div>
+                            <div className="tont-bold">${formatAmount(profile.returns)}</div>
                         </div>
                     </div>
                     <div className="flex items-center justify-between gap-3 mt-4">

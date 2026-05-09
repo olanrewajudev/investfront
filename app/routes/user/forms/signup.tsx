@@ -17,7 +17,7 @@ export default function Signup({ stack, setVerifyEmail }: { stack: ReturnType<ty
   const Icon2 = pass2 ? FaEye : FaEyeSlash;
   const [loading, setLoading] = useState(false);
   const form = useForm({
-    mode: "uncontrolled", initialValues: { email: '', firstName: '', lastName: '', username: '', password: '', confirmPassword: '', phone: '' },
+    mode: "uncontrolled", initialValues: { email: '', firstName: '', lastName: '', username: '', password: '', confirmPassword: '', phone: '', upline: '' },
     validate: {
       firstName: (v) => !v ? 'First name is required' : null,
       lastName: (v) => !v ? 'Last name is required' : null,
@@ -59,6 +59,7 @@ export default function Signup({ stack, setVerifyEmail }: { stack: ReturnType<ty
             <Forminput content="Last Name" error={form.errors.lastName?.toString() || ''}{...form.getInputProps("lastName")} placeholder='Last Name' />
             <Forminput content="Username" error={form.errors.username?.toString() || ''}{...form.getInputProps("username")} placeholder='Username' />
             <Forminput content="Email" type="email" error={form.errors.email?.toString() || ''}{...form.getInputProps("email")} placeholder='Email' />
+            <Forminput content="Referral Code (Optional)" type="text" error={form.errors.email?.toString() || ''}{...form.getInputProps("upline")} placeholder='Referral Code' />
             <Forminput content="number" type="number" error={form.errors.phone?.toString() || ''}{...form.getInputProps("phone")} placeholder='+123456789' />
             <div className="flex w-full gap-2">
               <div className="relative flex-1">
